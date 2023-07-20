@@ -1,5 +1,10 @@
 # Jobs
 #
+- company: Reutlingen University
+  position: Lecturer for Scientific Writing
+  duration: Starting Oct, 2023
+
+
 - company: Mercedes-Benz Tech Motion GmbH
   position: PhD Candidate
   duration: Oct, 2021 &mdash; Present
@@ -9,10 +14,24 @@
 - company: Fraunhofer IPA
   position: Master's Thesis
   duration:  Feb, 2021 &mdash; Sept, 2021
-  summary: Topic visual SLAM in non-stationary environments.
+  summary: >-
+    Topic: visual SLAM in non-stationary environments.
+
+- company: Reutlingen University
+  position: Tutor for Programming C and Python
+  duration: Mar, 2019  &mdash; Feb, 2021
+  summary: >-
+    Teaching students the basics of C and Python in an interactive lecture
 
 #
 - company: Reutlingen Research Institute (RRI)
   position: Research Asssistant
-  duration:   Mar, 2020  &mdash; Feb, 2021
-  summary: xxx.
+  duration: Mar, 2020  &mdash; Feb, 2021
+  summary: >-
+    Project <a href="https://www.ki-deltalearning.de/">KI Delta Learning</a>: Unity Simulation, Computer Vision and Python Programming
+    
+- company: Fraunhofer IAO
+  position: Research Asssistant
+  duration: Aug, 2019  &mdash; Jan, 2020
+  summary: >-
+    Unity development for collaborative Virtual Reality

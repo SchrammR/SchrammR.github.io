@@ -119,7 +119,7 @@
   font-size: 1.1rem;
   @include sans_light;
   color: #333;
-  line-height: 50px;
+  line-height: 55px;
   @include transition(all .2s ease);
 
   &:hover {

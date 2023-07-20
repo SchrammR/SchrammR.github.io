@@ -75,6 +75,26 @@
       <!-- end Education -->
       {% endif %}
 	  
+	  
+	{% if site.resume_section_publication %}
+      <!-- begin Service -->
+      <section class="content-section">
+        <header class="section-header">
+          <h2>Publications</h2>
+        </header>
+
+        {% for job in site.data.publications %}
+        <div class="resume-item" itemscope itemprop="worksFor" itemtype="http://schema.org/Organization">
+          <h4 class="resume-item-details" itemprop="description">{{ job.position }}</h4>
+          <p class="resume-item-copy">{{ job.summary }}</p>
+        </div><!-- end of resume-item -->
+        {% endfor %}
+
+      </section>
+      <!-- end Service -->
+      {% endif %}
+	  
+	  
 	   {% if site.resume_section_experience %}
       <!-- begin Experience -->
       <section class="content-section">

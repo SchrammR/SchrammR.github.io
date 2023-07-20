@@ -10,8 +10,8 @@ sass:
 
 # Resume settings
 resume_avatar:                  "false"
-resume_name:                    "Robin C. Schramm"
-resume_title:                   "HCI Researcher"
+resume_name:                    "Robin Connor Schramm"
+resume_title:                   "Summary"
 
 # used for the contact button in _layouts/resume.html
 resume_contact_email:           "robinschramm@gmx.de"
@@ -23,7 +23,9 @@ resume_contact_address:         ""
 resume_header_contact_info:     ""
 display_header_contact_info:    "false"
 
-resume_header_intro: "<p>Summary</p>"
+resume_header_intro: "<p>I'm a Human-Computer Interaction researcher, working on In-Car Augmented Reality interaction.
+My background consists of a mix of industry projects, academic research, and teaching experience.
+</p>"
 
 # use "yes" to display the email contact button,
 # "no" to display an "I'm not looking for work" message,
@@ -34,7 +36,9 @@ resume_looking_for_work:        "yes"
 # Decide which sections to use
 # comment out to hide
 resume_section_education:       true
+resume_section_publication:       true
 resume_section_experience:      true
+resume_section_service:         true
 # resume_section_projects:        true
 # resume_section_skills:          true
 # resume_section_recognition:     true
@@ -45,13 +49,13 @@ resume_section_experience:      true
 # Resume social links
 # uncomment the options you wish to display, and add your own URL
 resume_social_links:
-  resume_github_url:            "https://github.com/Schramm"
+  resume_github_url:            "https://github.com/SchrammR"
   resume_twitter_url:           "http://twitter.com/SchrammResearch"
   # resume_dribbble_url:          "https://dribbble.com/jag"
   # resume_facebook_url:          "insert Facebook URL here"
   resume_linkedin_url:          "https://www.linkedin.com/in/RobinSchramm"
   # resume_instagram_url:         "insert your Instagram URL here"
-  # resume_website_url:           "http://joelglovier.com"
+  resume_website_url:           "https://scholar.google.com/citations?hl=en&user=oKu2gN8AAAAJ"
   # resume_medium_url:            "https://medium.com/@jglovier"
 resume_print_social_links:      true
 

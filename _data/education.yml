@@ -2,13 +2,15 @@
 - degree: PhD Candidate, Human-Computer Interaction
   uni: RheinMain University of Applied Sciences
   year: 2021 &mdash; present
-  summary: 
+  summary: >- 
+    Topic: Interactive Points-of-Interest for In-Car Augmented Reality
 
 # Degree
 - degree: Master of Science, Human-Centered Computing
   uni: Reutlingen University
   year: 2019 &mdash; 2021
   summary: >- 
+    <a href="https://github.com/SchrammR/Papers/blob/main/Theses/Masterthesis_Entwicklung_und_Simulation_eines_LT-SLAM_Systems.pdf">Thesis (German)</a>: Development and Simulation of a Long-Term Visual SLAM System for Mobile Robots.
     Grade: 1.3
 
 # Degree
@@ -16,5 +18,5 @@
   uni: Reutlingen University
   year: 2016 &mdash; 2019
   summary: >- 
-    Grade: 1.7
-
+      <a href="https://github.com/SchrammR/Papers/blob/main/Theses/Bachelorthesis_Vergleich%20von%20Inverse%20Kinematics%20und%20Motion%20Tracking%20im%20Zuge%20einer%20VR%20Anwendung.pdf">Thesis (German)</a>: Comparison of Inverse Kinematics and Motion Tracking for VR Avatar Animation.
+      Grade: 1.7
