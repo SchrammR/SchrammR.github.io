@@ -106,7 +106,7 @@
 
         {% for job in site.data.service %}
         <div class="resume-item" itemscope itemprop="worksFor" itemtype="http://schema.org/Organization">
-          <h4 class="resume-item-details" itemprop="description">{{ job.position }}</h4>
+          <h3 class="resume-item-details" itemprop="description">{{ job.position }}</h3>
           <p class="resume-item-copy">{{ job.summary }}</p>
         </div><!-- end of resume-item -->
         {% endfor %}
