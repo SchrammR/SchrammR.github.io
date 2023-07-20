@@ -1,6 +1,6 @@
 # Site settings
-title: "Robin Connor Schramm: CV"
-description: ""
+title: "Robin Schramm: CV"
+description: "I'm a Human-Computer Interaction researcher, working on In-Car Augmented Reality interaction. My background consists of a mix of industry projects, academic research, and teaching experience."
 
 # Build settings
 markdown: kramdown
@@ -36,7 +36,7 @@ resume_looking_for_work:        "yes"
 # Decide which sections to use
 # comment out to hide
 resume_section_education:       true
-resume_section_publication:       true
+resume_section_publication:     true
 resume_section_experience:      true
 resume_section_service:         true
 # resume_section_projects:        true
