@@ -23,9 +23,7 @@ resume_contact_address:         ""
 resume_header_contact_info:     ""
 display_header_contact_info:    "false"
 
-resume_header_intro: "<p>I'm a Human-Computer Interaction researcher, working on In-Car Augmented Reality interaction.
-My background consists of a mix of industry projects, academic research, and teaching experience.
-</p>"
+resume_header_intro: "<p>Mail: robin.schramm@mercedes-benz.com</p>"
 
 # use "yes" to display the email contact button,
 # "no" to display an "I'm not looking for work" message,
