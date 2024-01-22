@@ -1,6 +1,6 @@
 # Site settings
-title: "Robin Schramm"
-description: "I'm a Human-Computer Interaction researcher, working on In-Car Augmented Reality interaction. My background consists of a mix of industry projects, academic research, and teaching experience."
+title: "Robin Schramm - CV"
+# description: "I'm a Human-Computer Interaction researcher, working on In-Car Augmented Reality interaction. My background consists of a mix of industry projects, academic research, and teaching experience."
 
 # Build settings
 markdown: kramdown
@@ -9,7 +9,7 @@ sass:
   style: compressed
 
 # Resume settings
-resume_avatar:                  "false"
+resume_avatar:                  "true"
 resume_name:                    "Robin Connor Schramm"
 resume_title:                   "Summary"
 
