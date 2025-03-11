@@ -11,7 +11,7 @@ sass:
 # Resume settings
 resume_avatar:                  "false"
 resume_name:                    "Robin Connor Schramm"
-resume_title:                   "Summary"
+resume_title:                   "CV"
 
 # used for the contact button in _layouts/resume.html
 resume_contact_email:           "robinschramm@gmx.de"
