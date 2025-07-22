@@ -44,5 +44,14 @@
   <li class="icon-link-item"><a href="{{ site.resume_social_links.resume_website_url }}" class="icon-link" itemprop="url">{% include icons/icon-website.html %}</a></li>
   {% endif %}
 
+  <!-- Orcid link -->
+  {% if site.resume_social_links.resume_orcid_url %}
+  <li class="icon-link-item">
+    <a href="{{ site.resume_social_links.resume_orcid_url }}" class="icon-link" itemprop="url">
+      <img src="../_assets/icons/icon-orcid.svg" alt="Website Icon" />
+    </a>
+  </li>
+  {% endif %}
+
 </ul>
 {% endif %}

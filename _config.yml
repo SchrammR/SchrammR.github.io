@@ -56,6 +56,8 @@ resume_social_links:
   # resume_instagram_url:         "insert your Instagram URL here"
   resume_website_url:           "https://scholar.google.com/citations?hl=en&user=oKu2gN8AAAAJ"
   # resume_medium_url:            "https://medium.com/@jglovier"
+  resume_orcid_url:           "https://orcid.org/0000-0002-4775-4219"
+
 resume_print_social_links:      true
 
 # Design settings
