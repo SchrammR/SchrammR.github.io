@@ -57,7 +57,7 @@ params:
           enabled: true
           title: Robin Connor Schramm
           subtitle: "I am a PhD Student in the field of HCI at RheinMain University and Mercedes-Benz Tech Innovation, Germany."
-          imageUrl: "picture.jpeg"
+          imageUrl: "picture.jpg"
           imageWidth: 160
           imageHeight: 160
           # buttons:
