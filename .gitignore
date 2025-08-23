@@ -1,4 +1,4 @@
-_site
-.sass-cache
-.DS_Store
-_vendor
+# Hugo build artifacts
+public/
+resources/
+.hugo_build.lock

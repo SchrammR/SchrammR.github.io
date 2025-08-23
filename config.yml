@@ -1,0 +1,123 @@
+baseURL: "https://schrammr.github.io/" 
+title: Robin Connor Schramm
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+pagination:
+  pagerSize: 20
+
+taxonomies:
+    tag: tags
+
+menu:
+    main:
+        - name: Books
+          url: books/
+          weight: 5 
+        - name: Papers
+          url: papers/
+          weight: 2
+        - name: Courses
+          url: courses/
+          weight: 3
+        - name: Data
+          url: data/
+          weight: 4 
+        - name: Blog
+          url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
+          weight: 6
+
+params:
+    description: "This website hosts Robin Connor Schramm's research papers, data, curriculum vitae, and contact information."
+    author: Robin Connor Schramm
+    # googleAnalyticsID: "G-XXXXX"
+    DateFormat: "January 2006"
+    defaultTheme: light
+    hideFooter: false
+    disableThemeToggle: true
+    ShowShareButtons: false
+    ShowReadingTime: false
+    disableSpecial1stPost: true
+    disableAnchoredHeadings: true
+    ShowPostNavLinks: false
+    ShowBreadCrumbs: false
+    ShowCodeCopyButtons: true
+    ShowAllPagesInArchive: false
+    # MainSections: ["books","courses","papers","data"]
+    MainSections: ["books","courses","papers","data"]
+    ShowToc: false
+    disableScrollToTop: true
+    TocOpen: true
+    ShowWordCount: false
+    UseHugoToc: true
+    comments: false
+    math: true
+    profileMode:
+          enabled: true
+          title: Robin Connor Schramm
+          subtitle: "I am a PhD Student in the field of HCI at RheinMain University and Mercedes-Benz Tech Innovation, Germany."
+          imageUrl: "picture.jpeg"
+          imageWidth: 160
+          imageHeight: 160
+          # buttons:
+          #   - name: Papers
+          #     url: papers/
+          #   - name: Data
+          #     url: data/
+          #   - name: Books
+          #     url: books/
+          #   - name: Courses
+          #     url: courses/
+          #   - name: Tags
+          #     url: tags/
+          #   - name: Archive
+          #     url: archive/
+          #   - name: Blog
+          #     url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
+
+    socialIcons:
+        - name: CV
+          url: cv.pdf
+        - name: Email
+          url: mailto:robinschramm@gmx.de
+        # - name: Zoom
+        #   url: https://www.zoom.us/my/igelfeld
+        # - name: Location
+        #   url: location/
+        # - name: Office Hours
+        #   url: officehours/
+        - name: Google Scholar
+          url: https://scholar.google.com/citations?user=oKu2gN8AAAAJ
+        # - name: GitHub
+        #   url: https://github.com/pmichaillat
+        # - name: Substack
+        #   url: https://pmichaillat.substack.com
+        # - name: YouTube
+        #   url: https://www.youtube.com/@pmichaillat
+        # - name: Twitter
+        #   url: https://x.com/pmichaillat
+        # - name: Bluesky
+        #   url: https://bsky.app/profile/pmichaillat.bsky.social
+
+    assets:
+        disableScrollBarStyle: true
+    cover:
+        hiddenInList: false
+        hiddenInSingle: true
+    label:
+      text: "Robin Connor Schramm"
+      icon: favicon.ico
+      iconHeight: 18
+
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
+    highlight:
+        guessSyntax: true
+        style: autumn 
+    tableOfContents:
+        endLevel: 2
+        ordered: false
+        startLevel: 2
