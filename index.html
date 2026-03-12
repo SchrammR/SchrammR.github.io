@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robin Connor Schramm — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header id="site-header">
+    <nav class="nav-container">
+      <a href="#hero" class="nav-logo">Robin Connor Schramm</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <a href="Assets/cv.pdf" class="btn-cv" target="_blank" rel="noopener">
+            CV <span class="icon">↓</span>
+          </a>
+        </li>
+      </ul>
+      <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-greeting">Hello, I'm</p>
+          <h1 class="hero-name">Robin Connor Schramm</h1>
+          <p class="hero-tagline">
+            Researcher &nbsp;·&nbsp; Lecturer &nbsp;·&nbsp; Software Engineer <br> RheinMain University &nbsp;·&nbsp; Mercedes-Benz Tech Innovation<br />
+            Human-Computer Interaction &nbsp;·&nbsp; Augmented Reality &nbsp;·&nbsp; Field Studies
+          </p>
+          <div class="hero-actions">
+            <a href="#publications" class="btn btn-primary">Publications</a>
+            <a href="#projects" class="btn btn-secondary">View Projects</a>
+            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+          </div>
+          <div class="hero-socials">
+            <!-- Replace href="#" with real links -->
+            <a href="https://github.com/robinschramm" aria-label="GitHub" title="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56v-2.04c-3.2.7-3.87-1.54-3.87-1.54-.52-1.34-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.16 1.18a11 11 0 0 1 2.88-.39c.98 0 1.96.13 2.88.39 2.2-1.49 3.16-1.18 3.16-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.56C20.22 21.42 23.5 17.1 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+            </a>
+            <a href="https://scholar.google.com/citations?user=oKu2gN8AAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5 12 0z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/robinschramm/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+            <a href="mailto:robinschramm@gmx.de" aria-label="Email" title="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="Assets/cv.pdf" download aria-label="Download CV" title="Download CV">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="11" x2="12" y2="17"/><polyline points="9,14 12,17 15,14"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <!-- Replace src with your actual photo -->
+          <img
+            src="Assets/ProfilbildUCL.jpg"
+            alt="Profile Picture"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about">
+      <div class="section-inner">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I am a PhD student at <strong>RheinMain University of Applied Sciences</strong>, supervised by <a href="#">Prof. Dr. Ulrich Schwanecke</a>. I conduct my PhD research in close collaboration with <strong>Mercedes-Benz Tech Innovation</strong>. My current research focuses on in-car Augmented Reality for passengers, exploring how head-mounted displays can enrich the travel experience through visualizing interactive points of interest.
+            </p>
+            <p>
+              I am currently a <strong>Visiting Researcher at University College London (UCL)</strong> at the UCL Interaction Centre, working with <a href="https://markcolley.com" target="_blank" rel="noopener">Dr. Mark Colley</a>.
+            </p>
+            <p>
+              My research focuses on Augmented Reality in Human-Computer Interaction, exploring how interactive AR systems can be designed and evaluated in real-world contexts. I advance HCI through artifact-driven research, building novel interaction techniques and studying them in ecologically valid field settings. At the same time, I investigate how simulation can serve as a methodological bridge for prototyping and evaluating systems before deploying them in real-world studies.
+            </p>
+          </div>
+          <div class="about-highlights">
+            <h3>Interests</h3>
+            <ul class="tag-list">
+              <li class="tag">Human-Computer Interaction</li>
+              <li class="tag">Augmented Reality</li>
+              <li class="tag">Simulation</li>
+              <li class="tag">Field Studies</li>
+              <li class="tag">Agentic AI</li>
+            </ul>
+            <h3>Work and Education</h3>
+            <ul class="edu-list">
+              <li>
+                <span class="edu-degree">Visiting Researcher</span>
+                <span class="edu-school">University College London (UCL)</span>
+              </li>
+              <li>
+                <span class="edu-degree">PhD Student &nbsp;·&nbsp; HCI</span>
+                <span class="edu-school">RheinMain University of Applied Sciences</span>
+              </li>
+              <li>
+                <span class="edu-degree">Software Engineer &nbsp;·&nbsp; In-Car AR</span>
+                <span class="edu-school">Mercedes-Benz Tech Innovation</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NEWS ========== -->
+    <section class="news-section">
+      <div class="section-inner">
+        <div class="news-header">
+          <h2 class="section-title">News</h2>
+        </div>
+        <p class="section-subtitle">Small updates on what I've been up to (newest first).</p>
+        <ul class="news-list" id="newsList">
+          <!-- News notes are injected by script.js from data/news.js -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PUBLICATIONS ========== -->
+    <section id="publications">
+      <div class="section-inner">
+        <h2 class="section-title">Publications</h2>
+        <p class="section-subtitle">
+          * denotes equal contribution.
+          <a href="https://scholar.google.com/citations?user=oKu2gN8AAAAJ" class="scholar-link" target="_blank" rel="noopener">Google Scholar ↗</a>
+        </p>
+
+        <div class="pub-controls">
+          <label class="project-control" for="publicationSortOrder">
+            <span>Sort</span>
+            <select id="publicationSortOrder" aria-label="Sort publications by year">
+              <option value="desc">Newest first</option>
+              <option value="asc">Oldest first</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="pub-list" id="pubList">
+          <!-- Publications are injected by script.js from the PUBLICATIONS array -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects">
+      <div class="section-inner">
+        <h2 class="section-title">Projects</h2>
+
+        <!-- Filter buttons — tags are generated from data in script.js -->
+        <div class="filter-bar" id="projectFilters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <!-- Additional filter buttons are injected by script.js -->
+        </div>
+
+        <div class="project-controls">
+          <label class="project-control" for="projectYearFilter">
+            <span>Year</span>
+            <select id="projectYearFilter" aria-label="Filter projects by year">
+              <option value="all">All years</option>
+            </select>
+          </label>
+          <label class="project-control" for="projectSortOrder">
+            <span>Sort</span>
+            <select id="projectSortOrder" aria-label="Sort projects by year">
+              <option value="desc">Newest first</option>
+              <option value="asc">Oldest first</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="project-grid" id="projectGrid">
+          <!-- Cards are injected by script.js from the PROJECTS array -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact">
+      <div class="section-inner contact-inner">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="contact-text">
+          I'm always open to collaboration, questions, or just a friendly chat
+          about research. The best way to reach me is by email.
+        </p>
+        <a href="mailto:robinschramm@gmx.de" class="btn btn-primary contact-email">
+          robinschramm@gmx.de
+        </a>
+        <div class="contact-socials">
+          <a href="https://github.com/schrammr" target="_blank" rel="noopener">GitHub</a>
+          <span>·</span>
+          <a href="https://scholar.google.com/citations?user=oKu2gN8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <span>·</span>
+          <a href="https://www.linkedin.com/in/robinschramm/" target="_blank" rel="noopener">LinkedIn</a>
+          <span>·</span>
+          <a href="Assets/cv.pdf" download>CV</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <p>© <span id="footerYear"></span> Robin Connor Schramm.</p>
+  </footer>
+
+  <!-- Lightbox overlay for media -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Media preview">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <button class="lightbox-nav lightbox-nav-prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
+    <button class="lightbox-nav lightbox-nav-next" id="lightboxNext" aria-label="Next">&#8250;</button>
+    <div class="lightbox-content" id="lightboxContent"></div>
+    <span class="lightbox-counter" id="lightboxCounter"></span>
+  </div>
+
+  <script src="data/projects.js"></script>
+  <script src="data/publications.js"></script>
+  <script src="data/news.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
