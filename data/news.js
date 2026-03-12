@@ -7,13 +7,21 @@ window.NEWS_DATA = [
   //     { label: "Paper", href: "https://..." },
   //   ],
   // }
+
+  {
+    date: "2026-03-19",
+    note: "Three of my students at Reutlingen University published their student paper about Ransomware at GI-Sicherheit '26 under my supervision.",
+    links: [
+      { label: "Program", href: "https://www.haw-hamburg.de/sicherheit2026/programm/donnerstag-190326/" },
+    ],
+  },
   {
     date: "2026-03-11",
     note: "I held a guest lecture for UCL’s Future Interfaces course on developing interactive systems with Unity.",
   },
   {
     date: "2026-03-04",
-    note: "I started my visiting researcher period at the UCL Interaction Centre with Dr. Mark Colley.",
+    note: "I started as a visiting researcher at the UCL Interaction Centre hosted by Dr. Mark Colley.",
   },
   {
     date: "2026-02-20",
@@ -21,7 +29,7 @@ window.NEWS_DATA = [
   },
   {
     date: "2026-03-10",
-    note: "I started teaching the Computer Science Seminar course at Reutlingen University for the sixth time.",
+    note: "I started lecturing the Computer Science Seminar course at Reutlingen University for the sixth time.",
   },
   {
     date: "2026-01-10",
