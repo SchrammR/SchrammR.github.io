@@ -1,0 +1,132 @@
+.paper-page {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.paper-hero {
+  background: linear-gradient(160deg, var(--color-bg) 45%, #d6e8d0 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.paper-hero .section-inner {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.paper-back {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.paper-hero-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.paper-venue {
+  display: inline-block;
+  background: var(--color-tag-bg);
+  color: var(--color-tag-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.paper-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.paper-authors {
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+}
+
+.paper-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.paper-section {
+  background: var(--color-bg);
+}
+
+.paper-section:nth-child(even) {
+  background: var(--color-surface);
+}
+
+.paper-abstract {
+  max-width: 900px;
+  color: var(--color-text-muted);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.video-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.video-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.video-card video {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: #000;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.image-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.image-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+}
