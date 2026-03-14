@@ -206,6 +206,43 @@ a:hover {
   color: var(--text-muted);
 }
 
+.citation-section {
+  padding-top: 10px;
+}
+
+.citation-title {
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, #2173d0 0%, #7d53c0 50%, #d57c6d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.citation-subtitle {
+  margin-bottom: 14px;
+  color: #23324d;
+}
+
+.citation-card {
+  border: 1px solid #dbe3f0;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #eaf1ff 0%, #f7f0f0 100%);
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.citation-pre {
+  margin: 0;
+}
+
+.citation-pre code {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  color: #1f2937;
+  white-space: pre;
+}
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
