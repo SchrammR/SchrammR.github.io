@@ -11,7 +11,7 @@ window.PUBLICATIONS_DATA = [
     links: [
       { label: "Paper (ACM)", href: "https://dl.acm.org/doi/10.1145/3706598.3714323" },
       { label: "PDF", href: "https://dl.acm.org/doi/pdf/10.1145/3706598.3714323" },
-      { label: "Project Page", href: "papers/augmented-journeys.html" },
+      { label: "Project Page", href: "papers/augmented-journeys.html", newTab: true },
     ],
   },
   {

@@ -335,7 +335,8 @@ function buildPublicationItem(pub) {
   const linksHtml = pub.links
     .map((l) => {
       const isExternal = /^(https?:)?\/\//i.test(l.href) || l.href.startsWith("mailto:");
-      const targetAttrs = isExternal ? ' target="_blank" rel="noopener"' : "";
+      const openInNewTab = Boolean(l.newTab) || isExternal;
+      const targetAttrs = openInNewTab ? ' target="_blank" rel="noopener"' : "";
       return `<a class="pub-link" href="${l.href}"${targetAttrs}>${l.label}</a>`;
     })
     .join("");

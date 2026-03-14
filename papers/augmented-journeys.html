@@ -13,7 +13,6 @@
   <meta property="og:url" content="https://schrammr.github.io/papers/augmented-journeys.html" />
   <meta property="og:image" content="https://schrammr.github.io/Assets/AugJour_3.png" />
 
-  <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="paper.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,27 +22,32 @@
   />
 </head>
 <body>
+  <header class="topbar">
+    <a class="topbar-home" href="../index.html#publications">← Back to Publications</a>
+    <a class="topbar-main" href="../index.html">Main Site</a>
+  </header>
+
   <main class="paper-page">
-    <section class="paper-hero">
-      <div class="section-inner">
-        <a class="paper-back" href="../index.html#publications">← Back to Publications</a>
-        <div class="paper-hero-head">
-          <span class="paper-venue">CHI 2025</span>
-          <span class="award-badge"><span class="award-badge-icon" aria-hidden="true">🏆</span>Honorable Mention</span>
+    <section class="hero">
+      <div class="container">
+        <p class="hero-kicker">Research Project Page</p>
+        <div class="hero-meta">
+          <span class="chip">CHI 2025</span>
+          <span class="chip chip-award">🏆 Honorable Mention</span>
         </div>
-        <h1 class="paper-title">Augmented Journeys: Interactive Points of Interest for In-Car Augmented Reality</h1>
-        <p class="paper-authors">Robin Connor Schramm, Ginevra Fedrizzi, Markus Sasalovici, Jann Philipp Freiwald, Ulrich Schwanecke</p>
-        <div class="paper-links">
-          <a class="btn btn-secondary" href="https://dl.acm.org/doi/10.1145/3706598.3714323" target="_blank" rel="noopener">Paper (ACM)</a>
-          <a class="btn btn-secondary" href="https://dl.acm.org/doi/pdf/10.1145/3706598.3714323" target="_blank" rel="noopener">PDF</a>
+        <h1 class="hero-title">Augmented Journeys: Interactive Points of Interest for In-Car Augmented Reality</h1>
+        <p class="hero-authors">Robin Connor Schramm, Ginevra Fedrizzi, Markus Sasalovici, Jann Philipp Freiwald, Ulrich Schwanecke</p>
+        <div class="hero-actions">
+          <a class="btn" href="https://dl.acm.org/doi/10.1145/3706598.3714323" target="_blank" rel="noopener">Paper (ACM)</a>
+          <a class="btn btn-muted" href="https://dl.acm.org/doi/pdf/10.1145/3706598.3714323" target="_blank" rel="noopener">PDF</a>
         </div>
       </div>
     </section>
 
-    <section class="paper-section">
-      <div class="section-inner">
+    <section class="section">
+      <div class="container">
         <h2 class="section-title">Abstract</h2>
-        <p class="paper-abstract">
+        <p class="abstract-text">
           As passengers spend more time in vehicles, the demand for non-driving related tasks (NDRTs) increases. In-car
           Augmented Reality (AR) has the potential to enhance passenger experiences by enabling interaction with the
           environment through NDRTs using world-fixed Points of Interest (POIs). However, the effectiveness of existing
@@ -58,10 +62,10 @@
       </div>
     </section>
 
-    <section class="paper-section">
-      <div class="section-inner">
+    <section class="section section-alt">
+      <div class="container">
         <h2 class="section-title">Videos</h2>
-        <p class="section-subtitle">Supplementary videos hosted by ACM Digital Library.</p>
+        <p class="section-subtitle">Supplementary videos hosted by ACM Digital Library</p>
         <div class="video-grid">
           <article class="video-card">
             <h3>Talk Video</h3>
@@ -79,8 +83,8 @@
       </div>
     </section>
 
-    <section class="paper-section">
-      <div class="section-inner">
+    <section class="section">
+      <div class="container">
         <h2 class="section-title">Images</h2>
         <div class="image-grid">
           <figure class="image-card">
@@ -96,5 +100,13 @@
       </div>
     </section>
   </main>
+
+  <footer class="page-footer">
+    <p>© <span id="footerYear"></span> Robin Connor Schramm</p>
+  </footer>
+
+  <script>
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
