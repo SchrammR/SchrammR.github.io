@@ -85,6 +85,12 @@ a:hover {
   font-weight: 500;
 }
 
+.hero-authors sup {
+  margin-left: 1px;
+  font-size: 0.72em;
+  vertical-align: super;
+}
+
 .hero-authors a:hover {
   color: #2f3e58;
 }
@@ -93,8 +99,25 @@ a:hover {
   color: #95a1b6;
 }
 
+.hero-affiliations {
+  margin: 2px auto 12px;
+  max-width: 860px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 28px;
+  color: #415473;
+  font-size: 1rem;
+}
+
+.hero-affiliations sup {
+  font-size: 0.82em;
+  margin-right: 1px;
+  color: #111827;
+}
+
 .hero-award {
-  margin: 0 auto 18px;
+  margin: 0 auto 20px;
   color: #7a4a08;
   font-weight: 700;
   font-size: 1.03rem;
