@@ -128,6 +128,8 @@ a:hover {
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .btn {
@@ -150,9 +152,9 @@ a:hover {
 }
 
 .btn-muted {
-  background: #ffffff;
-  border-color: #d9dcff;
-  color: #4f46e5;
+  border: 1px solid #7b6ef6;
+  background: linear-gradient(90deg, #5f6ee8 0%, #8d5fbc 100%);
+  color: white;
 }
 
 .section {
