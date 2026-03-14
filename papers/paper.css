@@ -207,7 +207,8 @@ a:hover {
 }
 
 .citation-section {
-  padding-top: 10px;
+  padding-top: 24px;
+  padding-bottom: 8px;
 }
 
 .citation-title {
@@ -216,11 +217,13 @@ a:hover {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  text-align: center;
 }
 
 .citation-subtitle {
   margin-bottom: 14px;
   color: #23324d;
+  text-align: center;
 }
 
 .citation-card {
@@ -229,6 +232,8 @@ a:hover {
   background: linear-gradient(90deg, #eaf1ff 0%, #f7f0f0 100%);
   padding: 20px;
   overflow-x: auto;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 .citation-pre {
