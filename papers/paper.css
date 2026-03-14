@@ -3,16 +3,16 @@
 }
 
 :root {
-  --bg: #f6f7fb;
+  --bg: #fbf8f4;
   --bg-soft: #ffffff;
   --bg-card: #ffffff;
-  --text: #1f2937;
-  --text-muted: #4b5563;
-  --border: #dbe3f0;
-  --brand: #4f46e5;
-  --brand-strong: #6d5ef3;
-  --award: #f59e0b;
-  --shadow: 0 10px 30px rgba(22, 37, 77, 0.08);
+  --text: #2f2a24;
+  --text-muted: #5f5448;
+  --border: #eadfd2;
+  --brand: #c16a2f;
+  --brand-strong: #d0834d;
+  --award: #b95d25;
+  --shadow: 0 10px 30px rgba(75, 45, 24, 0.08);
 }
 
 html,
@@ -29,7 +29,7 @@ body {
 }
 
 a {
-  color: #3f3bb6;
+  color: #9d5426;
   text-decoration: none;
 }
 
@@ -54,7 +54,7 @@ a:hover {
   max-width: 970px;
   line-height: 1.2;
   margin-inline: auto;
-  background: linear-gradient(90deg, #2173d0 0%, #7d53c0 50%, #d57c6d 100%);
+  background: linear-gradient(90deg, #b85a28 0%, #cf7a3f 52%, #e29a64 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -66,7 +66,7 @@ a:hover {
   font-family: "Lora", Georgia, serif;
   font-size: clamp(1.25rem, 3vw, 2rem);
   line-height: 1.25;
-  color: #33517f;
+  color: #744a30;
 }
 
 .hero-authors {
@@ -81,7 +81,7 @@ a:hover {
 }
 
 .hero-authors a {
-  color: #3f5273;
+  color: #6d5948;
   font-weight: 500;
 }
 
@@ -92,11 +92,11 @@ a:hover {
 }
 
 .hero-authors a:hover {
-  color: #2f3e58;
+  color: #8f4b25;
 }
 
 .hero-authors span {
-  color: #95a1b6;
+  color: #b9a795;
 }
 
 .hero-affiliations {
@@ -106,19 +106,19 @@ a:hover {
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px 28px;
-  color: #415473;
+  color: #786250;
   font-size: 1rem;
 }
 
 .hero-affiliations sup {
   font-size: 0.82em;
   margin-right: 1px;
-  color: #111827;
+  color: #2f2a24;
 }
 
 .hero-award {
   margin: 0 auto 20px;
-  color: #7a4a08;
+  color: #9b4d1d;
   font-weight: 700;
   font-size: 1.03rem;
 }
@@ -136,8 +136,8 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #7b6ef6;
-  background: linear-gradient(90deg, #5f6ee8 0%, #8d5fbc 100%);
+  border: 1px solid #cf8d57;
+  background: linear-gradient(90deg, #bc6a33 0%, #d58a52 100%);
   color: white;
   padding: 9px 16px;
   border-radius: 999px;
@@ -152,8 +152,8 @@ a:hover {
 }
 
 .btn-muted {
-  border: 1px solid #7b6ef6;
-  background: linear-gradient(90deg, #5f6ee8 0%, #8d5fbc 100%);
+  border: 1px solid #cf8d57;
+  background: linear-gradient(90deg, #bc6a33 0%, #d58a52 100%);
   color: white;
 }
 
@@ -162,9 +162,9 @@ a:hover {
 }
 
 .section-alt {
-  background: #f0f4ff;
-  border-top: 1px solid #dbe3f0;
-  border-bottom: 1px solid #dbe3f0;
+  background: #f8efe6;
+  border-top: 1px solid #eadfd2;
+  border-bottom: 1px solid #eadfd2;
 }
 
 .section-title {
@@ -188,9 +188,9 @@ a:hover {
 }
 
 .abstract-card {
-  border: 1px solid #dbe3f0;
+  border: 1px solid #eadfd2;
   border-radius: 18px;
-  background: linear-gradient(90deg, #eef3ff 0%, #f6f2ff 100%);
+  background: linear-gradient(90deg, #fff6ef 0%, #fff2e8 100%);
   padding: 20px;
 }
 
@@ -213,7 +213,7 @@ a:hover {
 
 .citation-title {
   margin-bottom: 6px;
-  background: linear-gradient(90deg, #2173d0 0%, #7d53c0 50%, #d57c6d 100%);
+  background: linear-gradient(90deg, #b85a28 0%, #cf7a3f 52%, #e29a64 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -222,14 +222,14 @@ a:hover {
 
 .citation-subtitle {
   margin-bottom: 14px;
-  color: #23324d;
+  color: #5f5448;
   text-align: center;
 }
 
 .citation-card {
-  border: 1px solid #dbe3f0;
+  border: 1px solid #eadfd2;
   border-radius: 18px;
-  background: linear-gradient(90deg, #eaf1ff 0%, #f7f0f0 100%);
+  background: linear-gradient(90deg, #fff6ef 0%, #fdf0e8 100%);
   padding: 20px;
   overflow-x: auto;
   max-width: 980px;
@@ -297,7 +297,7 @@ a:hover {
 }
 
 .page-footer {
-  border-top: 1px solid #dbe3f0;
+  border-top: 1px solid #eadfd2;
   margin-top: 40px;
   text-align: center;
   color: var(--text-muted);
