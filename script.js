@@ -2,24 +2,14 @@
    DATA SOURCES
    Edit content in:
    - data/projects.csv
-   - data/project_tags.csv
-   - data/project_media.csv
-   - data/project_links.csv
    - data/publications.csv
-   - data/publication_links.csv
    - data/news.csv
-   - data/news_links.csv
    ============================================================= */
 
 const DATA_FILES = {
   projects: "data/projects.csv",
-  projectTags: "data/project_tags.csv",
-  projectMedia: "data/project_media.csv",
-  projectLinks: "data/project_links.csv",
   publications: "data/publications.csv",
-  publicationLinks: "data/publication_links.csv",
   news: "data/news.csv",
-  newsLinks: "data/news_links.csv",
 };
 
 let PROJECTS = [];
@@ -116,57 +106,41 @@ function parseOptionalBoolean(value) {
   return normalized === "true" || normalized === "1" || normalized === "yes";
 }
 
-function compareBySortOrder(a, b) {
-  const aOrder = parseOptionalNumber(a.sort_order) ?? Number.MAX_SAFE_INTEGER;
-  const bOrder = parseOptionalNumber(b.sort_order) ?? Number.MAX_SAFE_INTEGER;
-  return aOrder - bOrder;
+function parseListField(value) {
+  return String(value || "")
+    .split(";;")
+    .map((item) => item.trim())
+    .filter(Boolean);
 }
 
-function groupRowsBy(rows, key) {
-  return rows.reduce((map, row) => {
-    const groupKey = row[key];
-    if (!groupKey) return map;
-    if (!map.has(groupKey)) {
-      map.set(groupKey, []);
-    }
-    map.get(groupKey).push(row);
-    return map;
-  }, new Map());
+function parseLinkField(value) {
+  return parseListField(value)
+    .map((item) => {
+      const [label = "", href = "", newTab = ""] = item.split("::").map((part) => part.trim());
+      return {
+        label,
+        href,
+        newTab: parseOptionalBoolean(newTab),
+      };
+    })
+    .filter((link) => link.href);
 }
 
-function normalizeProjects(projectRows, tagRows, mediaRows, linkRows) {
-  const tagsByProject = groupRowsBy(tagRows, "project_id");
-  const mediaByProject = groupRowsBy(mediaRows, "project_id");
-  const linksByProject = groupRowsBy(linkRows, "project_id");
-
+function normalizeProjects(projectRows) {
   return projectRows.map((row) => ({
     title: row.title,
-    tags: (tagsByProject.get(row.id) || [])
-      .sort(compareBySortOrder)
-      .map((tagRow) => tagRow.tag)
-      .filter(Boolean),
+    tags: parseListField(row.tags),
     status: row.status || "",
     award: row.award || "",
     description: row.description || "",
-    images: (mediaByProject.get(row.id) || [])
-      .sort(compareBySortOrder)
-      .map((mediaRow) => mediaRow.src)
-      .filter(Boolean),
+    images: parseListField(row.images),
     video: row.video || "",
-    links: (linksByProject.get(row.id) || [])
-      .sort(compareBySortOrder)
-      .map((linkRow) => ({
-        label: linkRow.label,
-        href: linkRow.href,
-      }))
-      .filter((link) => link.href),
+    links: parseLinkField(row.links),
     year: parseOptionalNumber(row.year),
   }));
 }
 
-function normalizePublications(publicationRows, linkRows) {
-  const linksByPublication = groupRowsBy(linkRows, "publication_id");
-
+function normalizePublications(publicationRows) {
   return publicationRows.map((row) => ({
     title: row.title,
     authors: row.authors || "",
@@ -175,57 +149,28 @@ function normalizePublications(publicationRows, linkRows) {
     year: parseOptionalNumber(row.year),
     abstract: row.abstract || "",
     thumb: row.thumb || "",
-    links: (linksByPublication.get(row.id) || [])
-      .sort(compareBySortOrder)
-      .map((linkRow) => ({
-        label: linkRow.label,
-        href: linkRow.href,
-        newTab: parseOptionalBoolean(linkRow.new_tab),
-      }))
-      .filter((link) => link.href),
+    links: parseLinkField(row.links),
   }));
 }
 
-function normalizeNews(newsRows, linkRows) {
-  const linksByNews = groupRowsBy(linkRows, "news_id");
-
+function normalizeNews(newsRows) {
   return newsRows.map((row) => ({
     date: row.date || "",
     note: row.note || "",
-    links: (linksByNews.get(row.id) || [])
-      .sort(compareBySortOrder)
-      .map((linkRow) => ({
-        label: linkRow.label,
-        href: linkRow.href,
-      }))
-      .filter((link) => link.href),
+    links: parseLinkField(row.links),
   }));
 }
 
 async function loadPortfolioData() {
-  const [
-    projectRows,
-    projectTagRows,
-    projectMediaRows,
-    projectLinkRows,
-    publicationRows,
-    publicationLinkRows,
-    newsRows,
-    newsLinkRows,
-  ] = await Promise.all([
+  const [projectRows, publicationRows, newsRows] = await Promise.all([
     fetchCsvRows(DATA_FILES.projects),
-    fetchCsvRows(DATA_FILES.projectTags),
-    fetchCsvRows(DATA_FILES.projectMedia),
-    fetchCsvRows(DATA_FILES.projectLinks),
     fetchCsvRows(DATA_FILES.publications),
-    fetchCsvRows(DATA_FILES.publicationLinks),
     fetchCsvRows(DATA_FILES.news),
-    fetchCsvRows(DATA_FILES.newsLinks),
   ]);
 
-  PROJECTS = normalizeProjects(projectRows, projectTagRows, projectMediaRows, projectLinkRows);
-  PUBLICATIONS = normalizePublications(publicationRows, publicationLinkRows);
-  NEWS_ITEMS = normalizeNews(newsRows, newsLinkRows);
+  PROJECTS = normalizeProjects(projectRows);
+  PUBLICATIONS = normalizePublications(publicationRows);
+  NEWS_ITEMS = normalizeNews(newsRows);
 }
 
 function showDataLoadError() {
