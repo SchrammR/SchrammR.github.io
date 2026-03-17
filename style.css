@@ -248,6 +248,13 @@ img, video { display: block; max-width: 100%; }
   line-height: 1.8;
 }
 
+.hero-profile {
+  max-width: 760px;
+  font-size: .98rem;
+  color: var(--color-text);
+  margin-bottom: 28px;
+}
+
 .hero-actions {
   display: flex;
   gap: 12px;
@@ -331,6 +338,94 @@ img, video { display: block; max-width: 100%; }
 
 .edu-degree { font-weight: 600; font-size: .9rem; }
 .edu-school  { font-size: .82rem; color: var(--color-text-muted); }
+
+/* =============================================
+   HIGHLIGHTS
+   ============================================= */
+#highlights { background: var(--color-bg); }
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.highlight-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.highlight-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.highlight-card h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.highlight-card p {
+  color: var(--color-text-muted);
+  font-size: .92rem;
+}
+
+/* =============================================
+   RESEARCH AGENDA
+   ============================================= */
+#research-agenda { background: var(--color-surface); }
+
+.agenda-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, .8fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.agenda-copy p {
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+
+.agenda-themes {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.agenda-themes h3 {
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.theme-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.theme-list li {
+  padding: 10px 12px;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--color-text);
+  font-size: .92rem;
+}
 
 /* =============================================
    TIMELINE / NEWS
@@ -1103,6 +1198,8 @@ footer {
   .hero-photo img { width: 160px; }
 
   .about-grid { grid-template-columns: 1fr; }
+  .highlights-grid { grid-template-columns: 1fr; }
+  .agenda-inner { grid-template-columns: 1fr; }
 
   .pub-item { grid-template-columns: 1fr; }
   .pub-thumb { width: 100%; }
