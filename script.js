@@ -231,7 +231,7 @@ const newsViewState = {
 };
 
 const NEWS_PREVIEW_COUNT = 5;
-const NEWS_SHOW_MORE_STEP = 7;
+const NEWS_SHOW_MORE_STEP = 5;
 
 function parseNewsDate(value) {
   if (typeof value === "string") {
