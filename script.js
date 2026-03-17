@@ -1108,6 +1108,7 @@ function extractYoutubeId(url) {
 function formatStatusLabel(status) {
   const labels = {
     publication: "Publication",
+    showcase: "Showcase",
     student: "Student project",
   };
   return labels[status] || status;
