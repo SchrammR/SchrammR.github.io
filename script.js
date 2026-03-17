@@ -27,6 +27,7 @@ async function fetchCsvRows(path) {
 
 function parseCsv(text) {
   const normalizedText = String(text || "").replace(/^\uFEFF/, "");
+  const delimiter = detectCsvDelimiter(normalizedText);
   const rows = [];
   let currentRow = [];
   let currentField = "";
@@ -54,7 +55,7 @@ function parseCsv(text) {
       continue;
     }
 
-    if (char === ",") {
+    if (char === delimiter) {
       currentRow.push(currentField);
       currentField = "";
       continue;
@@ -92,6 +93,13 @@ function parseCsv(text) {
       });
       return entry;
     });
+}
+
+function detectCsvDelimiter(text) {
+  const firstLine = String(text || "").split(/\r?\n/, 1)[0] || "";
+  const semicolonCount = (firstLine.match(/;/g) || []).length;
+  const commaCount = (firstLine.match(/,/g) || []).length;
+  return semicolonCount > commaCount ? ";" : ",";
 }
 
 function parseOptionalNumber(value) {
