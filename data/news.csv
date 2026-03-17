@@ -1,19 +1,19 @@
-id,date,note,links
-news_gi_sicherheit,2026-03-19,"Three of my students at Reutlingen University published their student paper about Ransomware at GI-Sicherheit '26 under my supervision.","Program::https://www.haw-hamburg.de/sicherheit2026/programm/donnerstag-190326/"
-news_guest_lecture_ucl,2026-03-11,"I held a guest lecture for UCL's Future Interfaces course on developing interactive systems with Unity.",
-news_prechi_london,2026-03-24,"I attended the Cockney Pre-CHI at the Imperial College London.","Event::https://www.imperial.ac.uk/events/206881/cockney-chi-2026/"
-news_prechi_bristol,2026-03-27,"I attended the South West UK Pre-CHI in Bristol.","Event::https://south-west-uk-pre-chi.github.io/"
-news_muc_ac,2026-03-17,"I will serve as Associate Chair (AC) for the full paper track at MuC'26.","Website::https://muc2026.mensch-und-computer.de/"
-news_pzai_colloquium,2026-02-11,"I presented a poster about my current resarch at the PZAI PhD colloquium.","PZAI::https://www.pzai.de/en/about-us/the-pzai"
-news_ulm_talk,2025-12-08,"I held an invited research talk at the Automotive User Interfaces at University of Ulm.",
-news_doktoranden_2024,2024-04-01,"I presented a poster about my current resarch at the Mercedes-Benz Doktoranden-Marktplatz.","LinkedIn Post::https://www.linkedin.com/posts/markus-sch%C3%A4fer_mercedesbenz-innovation-activity-7204404542233333760-aNBo/"
-news_doktoranden_2023,2023-04-01,"I presented a poster about my current resarch at the Mercedes-Benz Doktoranden-Marktplatz.",
-news_visiting_researcher,2026-03-04,"I started as a visiting researcher at the UCL Interaction Centre hosted by Dr. Mark Colley.",
-news_daad,2026-02-20,"I received the DAAD HAW International Scholarship for my three-month research visit at UCL.",
-news_seminar_course,2026-03-10,"I started lecturing the Computer Science Seminar course at Reutlingen University for the sixth time.",
-news_mum_committee,2026-01-10,"I will be part of the MUM'26 organizing committee, serving as proceedings chair.","Website::https://mum-conf.org/2026/index.php?web=committee"
-news_augmented_journeys,2025-01-30,"I published Augmented Journeys: Interactive Points of Interest for In-Car Augmented Reality at CHI 2025 and received an Honorable Mention.","Paper::https://dl.acm.org/doi/10.1145/3706598.3714323 ;; PDF::https://dl.acm.org/doi/pdf/10.1145/3706598.3714323"
-news_blending_worlds,2025-01-29,"I published Blending the Worlds: An Evaluation of World-Fixed Visual Appearances in Automotive Augmented Reality at CHI 2025.","Paper::https://dl.acm.org/doi/10.1145/3706598.3713185 ;; PDF::https://dl.acm.org/doi/pdf/10.1145/3706598.3713185"
-news_bumpy_ride,2025-01-28,"I co-authored and published Bumpy Ride? Understanding the Effects of External Forces on Spatial Interactions in Moving Vehicles at CHI 2025.","Paper::https://dl.acm.org/doi/10.1145/3706598.3714077"
-news_assessing_ar,2023-09-18,"I published Assessing Augmented Reality Selection Techniques for Passengers in Moving Vehicles: A Real-World User Study at AutomotiveUI 2023.","Paper::https://dl.acm.org/doi/10.1145/3580585.3607152 ;; PDF::https://dl.acm.org/doi/pdf/10.1145/3580585.3607152"
-news_in_car_office,2023-09-17,"I co-authored and published In-Car Office: Can HMD-Based AR Alleviate Passenger Motion Sickness? at AutomotiveUI 2023 Adjunct.","Paper::https://dl.acm.org/doi/10.1145/3581961.3609869"
+date,note,links
+2026-03-19,"Three of my students at Reutlingen University published their student paper about Ransomware at GI-Sicherheit '26 under my supervision.","Program::https://www.haw-hamburg.de/sicherheit2026/programm/donnerstag-190326/"
+2026-03-11,"I held a guest lecture for UCL's Future Interfaces course on developing interactive systems with Unity.",
+2026-03-24,"I attended the Cockney Pre-CHI at the Imperial College London.","Event::https://www.imperial.ac.uk/events/206881/cockney-chi-2026/"
+2026-03-27,"I attended the South West UK Pre-CHI in Bristol.","Event::https://south-west-uk-pre-chi.github.io/"
+2026-03-17,"I will serve as Associate Chair (AC) for the full paper track at MuC'26.","Website::https://muc2026.mensch-und-computer.de/"
+2026-02-11,"I presented a poster about my current resarch at the PZAI PhD colloquium.","PZAI::https://www.pzai.de/en/about-us/the-pzai"
+2025-12-08,"I held an invited research talk at the Automotive User Interfaces at University of Ulm.",
+2024-04-01,"I presented a poster about my current resarch at the Mercedes-Benz Doktoranden-Marktplatz.","LinkedIn Post::https://www.linkedin.com/posts/markus-sch%C3%A4fer_mercedesbenz-innovation-activity-7204404542233333760-aNBo/"
+2023-04-01,"I presented a poster about my current resarch at the Mercedes-Benz Doktoranden-Marktplatz.",
+2026-03-04,"I started as a visiting researcher at the UCL Interaction Centre hosted by Dr. Mark Colley.",
+2026-02-20,"I received the DAAD HAW International Scholarship for my three-month research visit at UCL.",
+2026-03-10,"I started lecturing the Computer Science Seminar course at Reutlingen University for the sixth time.",
+2026-01-10,"I will be part of the MUM'26 organizing committee, serving as proceedings chair.","Website::https://mum-conf.org/2026/index.php?web=committee"
+2025-01-30,"I published Augmented Journeys: Interactive Points of Interest for In-Car Augmented Reality at CHI 2025 and received an Honorable Mention.","Paper::https://dl.acm.org/doi/10.1145/3706598.3714323 ;; PDF::https://dl.acm.org/doi/pdf/10.1145/3706598.3714323"
+2025-01-29,"I published Blending the Worlds: An Evaluation of World-Fixed Visual Appearances in Automotive Augmented Reality at CHI 2025.","Paper::https://dl.acm.org/doi/10.1145/3706598.3713185 ;; PDF::https://dl.acm.org/doi/pdf/10.1145/3706598.3713185"
+2025-01-28,"I co-authored and published Bumpy Ride? Understanding the Effects of External Forces on Spatial Interactions in Moving Vehicles at CHI 2025.","Paper::https://dl.acm.org/doi/10.1145/3706598.3714077"
+2023-09-18,"I published Assessing Augmented Reality Selection Techniques for Passengers in Moving Vehicles: A Real-World User Study at AutomotiveUI 2023.","Paper::https://dl.acm.org/doi/10.1145/3580585.3607152 ;; PDF::https://dl.acm.org/doi/pdf/10.1145/3580585.3607152"
+2023-09-17,"I co-authored and published In-Car Office: Can HMD-Based AR Alleviate Passenger Motion Sickness? at AutomotiveUI 2023 Adjunct.","Paper::https://dl.acm.org/doi/10.1145/3581961.3609869"
