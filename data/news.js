@@ -27,6 +27,13 @@ window.NEWS_DATA = [
     ],
   },
   {
+    date: "2026-02-11",
+    note: "I presented a poster about my current resarch at the PZAI PhD colloquium.",
+    links: [
+      { label: "PZAI", href: "https://www.pzai.de/en/about-us/the-pzai" },
+    ],
+  },
+  {
     date: "2026-03-04",
     note: "I started as a visiting researcher at the UCL Interaction Centre hosted by Dr. Mark Colley.",
   },
