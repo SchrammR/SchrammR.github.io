@@ -807,6 +807,11 @@ img, video { display: block; max-width: 100%; }
   transform: translateX(4px);
 }
 
+.pub-gallery {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
 .pub-thumb {
   width: 220px;
   aspect-ratio: 16 / 9;

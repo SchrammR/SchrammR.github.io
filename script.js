@@ -157,6 +157,7 @@ function normalizePublications(publicationRows) {
     year: parseOptionalNumber(row.year),
     abstract: row.abstract || "",
     thumb: row.thumb || "",
+    images: parseListField(row.images),
     links: parseLinkField(row.links),
   }));
 }
@@ -548,6 +549,34 @@ function initCardGallery(card, galleryId, total) {
 }
 
 function buildPublicationItem(pub) {
+  const publicationImages = pub.images.length ? pub.images : (pub.thumb ? [pub.thumb] : []);
+  const galleryId = `gallery-${_galleryCounter++}`;
+  const mediaList = publicationImages.map((src) => ({ type: "image", src }));
+  window._GALLERIES[galleryId] = mediaList;
+  const total = mediaList.length;
+
+  const galleryHtml = mediaList.length
+    ? `<div class="card-gallery pub-gallery">
+      <div class="gallery-track">
+        ${mediaList.map((item, index) => `<div class="gallery-slide${index === 0 ? " active" : ""}"
+                 data-gallery-id="${galleryId}"
+                 data-gallery-idx="${index}"
+                 role="button" tabindex="0"
+                 aria-label="Expand image ${index + 1} of ${total}">
+            <img src="${item.src}" alt="${pub.title} image ${index + 1}" loading="lazy" />
+            <div class="gallery-slide-overlay">${expandIcon()}</div>
+          </div>`).join("")}
+      </div>
+      ${total > 1 ? `
+        <button class="gallery-btn gallery-btn-prev" aria-label="Previous slide">&#8249;</button>
+        <button class="gallery-btn gallery-btn-next" aria-label="Next slide">&#8250;</button>
+        <div class="gallery-dots">
+          ${mediaList.map((_, index) => `<span class="gallery-dot${index === 0 ? " active" : ""}"></span>`).join("")}
+        </div>
+        <span class="gallery-count">${total} images</span>` : ""}
+    </div>`
+    : "";
+
   const linksHtml = pub.links
     .map((l) => {
       const isExternal = /^(https?:)?\/\//i.test(l.href) || l.href.startsWith("mailto:");
@@ -560,17 +589,7 @@ function buildPublicationItem(pub) {
   const item = document.createElement("div");
   item.className = "pub-item reveal";
   item.innerHTML = `
-    <img
-      class="pub-thumb"
-      src="${pub.thumb}"
-      alt="${pub.title} thumbnail"
-      loading="lazy"
-      data-lightbox-type="image"
-      data-lightbox-src="${pub.thumb}"
-      role="button"
-      tabindex="0"
-      aria-label="Expand thumbnail"
-    />
+    ${galleryHtml}
     <div class="pub-body">
       <div class="pub-badges">
         <span class="pub-venue-badge">${pub.venue}</span>
@@ -594,6 +613,8 @@ function buildPublicationItem(pub) {
     btn.setAttribute("aria-expanded", open);
     btn.textContent = open ? "Abstract ▴" : "Abstract ▾";
   });
+
+  initCardGallery(item, galleryId, total);
 
   return item;
 }
