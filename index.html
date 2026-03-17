@@ -19,6 +19,7 @@
   <meta name="twitter:description" content="Robin Connor Schramm is a researcher and software engineer focused on Human-Computer Interaction." />
   <meta name="twitter:image" content="https://schrammr.github.io/Assets/ProfilbildUCL.jpg" />
 
+  <link rel="icon" type="image/jpeg" href="Assets/ProfilbildUCL.jpg" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,7 +52,7 @@
   <header id="site-header">
     <nav class="nav-container">
       <a href="#hero" class="nav-logo">Robin Connor Schramm</a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="siteNavLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -62,7 +63,7 @@
           </a>
         </li>
       </ul>
-      <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+      <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-controls="siteNavLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </nav>

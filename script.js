@@ -755,8 +755,6 @@ function renderProjects(options = {}) {
     return;
   }
 
-  window._GALLERIES = {};
-  _galleryCounter = 0;
   grid.innerHTML = "";
 
   const visibleProjects = getVisibleProjects();
@@ -838,34 +836,39 @@ function updatePublicationShowMoreButton(totalVisiblePublications) {
   if (!shouldShowButton) return;
 
   const atEnd = publicationViewState.visibleCount >= totalVisiblePublications;
+  const canShowLess = publicationViewState.visibleCount > PUBLICATION_PREVIEW_COUNT;
 
-  const stagedBtn = document.createElement("button");
-  stagedBtn.type = "button";
-  stagedBtn.className = "btn btn-secondary";
-  if (atEnd) {
-    stagedBtn.textContent = "Show less";
-  } else {
+  if (!atEnd) {
+    const stagedBtn = document.createElement("button");
+    stagedBtn.type = "button";
+    stagedBtn.className = "btn btn-secondary";
     const remaining = Math.max(0, totalVisiblePublications - publicationViewState.visibleCount);
     const stepAmount = Math.min(PUBLICATION_SHOW_MORE_STEP, remaining);
     stagedBtn.textContent = `Show ${stepAmount} more (${remaining} left)`;
-  }
-
-  stagedBtn.addEventListener("click", () => {
-    if (atEnd) {
-      publicationViewState.visibleCount = Math.max(
-        PUBLICATION_PREVIEW_COUNT,
-        publicationViewState.visibleCount - PUBLICATION_SHOW_MORE_STEP
-      );
-    } else {
+    stagedBtn.addEventListener("click", () => {
       publicationViewState.visibleCount = Math.min(
         totalVisiblePublications,
         publicationViewState.visibleCount + PUBLICATION_SHOW_MORE_STEP
       );
-    }
-    renderPublications({ animate: true });
-  });
+      renderPublications({ animate: true });
+    });
+    wrap.appendChild(stagedBtn);
+  }
 
-  wrap.appendChild(stagedBtn);
+  if (canShowLess) {
+    const showLessBtn = document.createElement("button");
+    showLessBtn.type = "button";
+    showLessBtn.className = "btn btn-secondary";
+    showLessBtn.textContent = "Show less";
+    showLessBtn.addEventListener("click", () => {
+      publicationViewState.visibleCount = Math.max(
+        PUBLICATION_PREVIEW_COUNT,
+        publicationViewState.visibleCount - PUBLICATION_SHOW_MORE_STEP
+      );
+      renderPublications({ animate: true });
+    });
+    wrap.appendChild(showLessBtn);
+  }
 
   if (!atEnd) {
     const showAllBtn = document.createElement("button");
@@ -1070,13 +1073,21 @@ function initMobileNav() {
   const burger = document.getElementById("navBurger");
   const links  = document.querySelector(".nav-links");
 
+  function setExpandedState(isExpanded) {
+    burger.setAttribute("aria-expanded", String(isExpanded));
+  }
+
   burger.addEventListener("click", () => {
-    links.classList.toggle("open");
+    const isExpanded = links.classList.toggle("open");
+    setExpandedState(isExpanded);
   });
 
   // Close on link click
   links.addEventListener("click", (e) => {
-    if (e.target.tagName === "A") links.classList.remove("open");
+    if (e.target.tagName === "A") {
+      links.classList.remove("open");
+      setExpandedState(false);
+    }
   });
 }
 
