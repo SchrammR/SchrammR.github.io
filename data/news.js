@@ -19,6 +19,20 @@ window.NEWS_DATA = [
     date: "2026-03-11",
     note: "I held a guest lecture for UCL’s Future Interfaces course on developing interactive systems with Unity.",
   },
+    {
+    date: "2026-03-24",
+    note: "I attended the Cockney Pre-CHI at the Imperial College London.",
+    links: [
+      { label: "Event", href: "https://www.imperial.ac.uk/events/206881/cockney-chi-2026/" },
+    ],
+  },
+    {
+    date: "2026-03-27",
+    note: "I attended the South West UK Pre-CHI in Bristol.",
+    links: [
+      { label: "Event", href: "https://south-west-uk-pre-chi.github.io/" },
+    ],
+  },
   {
     date: "2026-03-17",
     note: "I will serve as Associate Chair (AC) for the full paper track at MuC'26.",
@@ -33,6 +47,22 @@ window.NEWS_DATA = [
       { label: "PZAI", href: "https://www.pzai.de/en/about-us/the-pzai" },
     ],
   },
+  {
+    date: "2025-12-08",
+    note: "I held an invited research talk at the Automotive User Interfaces at University of Ulm.",
+  },
+  {
+    date: "2024-04-01",
+    note: "I presented a poster about my current resarch at the Mercedes-Benz “Doktoranden-Marktplatz”.",
+    links: [
+      { label: "LinkedIn Post", href: "  https://www.linkedin.com/posts/markus-sch%C3%A4fer_mercedesbenz-innovation-activity-7204404542233333760-aNBo/" },
+    ],
+  },
+  {
+    date: "2023-04-01",
+    note: "I presented a poster about my current resarch at the Mercedes-Benz “Doktoranden-Marktplatz”.",
+  },
+
   {
     date: "2026-03-04",
     note: "I started as a visiting researcher at the UCL Interaction Centre hosted by Dr. Mark Colley.",
