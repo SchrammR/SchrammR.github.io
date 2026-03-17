@@ -20,6 +20,13 @@ window.NEWS_DATA = [
     note: "I held a guest lecture for UCL’s Future Interfaces course on developing interactive systems with Unity.",
   },
   {
+    date: "2026-03-17",
+    note: "I will serve as Associate Chair (AC) for the full paper track at MuC'26.",
+    links: [
+      { label: "Website", href: "https://muc2026.mensch-und-computer.de/" },
+    ],
+  },
+  {
     date: "2026-03-04",
     note: "I started as a visiting researcher at the UCL Interaction Centre hosted by Dr. Mark Colley.",
   },
