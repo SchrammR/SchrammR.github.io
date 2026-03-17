@@ -382,33 +382,40 @@ function updateNewsShowMoreButton(totalItems) {
   const shouldShowButton = totalItems > NEWS_PREVIEW_COUNT;
   if (!shouldShowButton) return;
 
-  const btn = document.createElement("button");
-  btn.type = "button";
-  btn.className = "btn btn-secondary";
   const atEnd = newsViewState.visibleCount >= totalItems;
-  if (atEnd) {
-    btn.textContent = "Show less";
-  } else {
+  const canShowLess = newsViewState.visibleCount > NEWS_PREVIEW_COUNT;
+
+  if (!atEnd) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn btn-secondary";
     const remaining = Math.max(0, totalItems - newsViewState.visibleCount);
     const stepAmount = Math.min(NEWS_SHOW_MORE_STEP, remaining);
     btn.textContent = `Show ${stepAmount} more (${remaining} left)`;
-  }
-  btn.addEventListener("click", () => {
-    if (atEnd) {
-      newsViewState.visibleCount = Math.max(
-        NEWS_PREVIEW_COUNT,
-        newsViewState.visibleCount - NEWS_SHOW_MORE_STEP
-      );
-    } else {
+    btn.addEventListener("click", () => {
       newsViewState.visibleCount = Math.min(
         totalItems,
         newsViewState.visibleCount + NEWS_SHOW_MORE_STEP
       );
-    }
-    renderNews({ animate: true });
-  });
+      renderNews({ animate: true });
+    });
+    wrap.appendChild(btn);
+  }
 
-  wrap.appendChild(btn);
+  if (canShowLess) {
+    const showLessBtn = document.createElement("button");
+    showLessBtn.type = "button";
+    showLessBtn.className = "btn btn-secondary";
+    showLessBtn.textContent = "Show less";
+    showLessBtn.addEventListener("click", () => {
+      newsViewState.visibleCount = Math.max(
+        NEWS_PREVIEW_COUNT,
+        newsViewState.visibleCount - NEWS_SHOW_MORE_STEP
+      );
+      renderNews({ animate: true });
+    });
+    wrap.appendChild(showLessBtn);
+  }
 
   if (!atEnd) {
     const showAllBtn = document.createElement("button");
