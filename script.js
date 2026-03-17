@@ -44,18 +44,38 @@ const newsViewState = {
 const NEWS_PREVIEW_COUNT = 5;
 const NEWS_SHOW_MORE_STEP = 7;
 
+function parseNewsDate(value) {
+  if (typeof value === "string") {
+    const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (match) {
+      const [, year, month, day] = match;
+      return new Date(Number(year), Number(month) - 1, Number(day));
+    }
+  }
+
+  return new Date(value);
+}
+
 function formatNewsDate(value) {
-  const date = new Date(value);
+  const date = parseNewsDate(value);
   if (Number.isNaN(date.getTime())) return value;
   return date.toLocaleDateString("en-US", { year: "numeric", month: "short" });
 }
 
 function getVisibleNews() {
-  return [...NEWS_ITEMS].sort((a, b) => {
-    const aTime = new Date(a.date).getTime();
-    const bTime = new Date(b.date).getTime();
-    return bTime - aTime;
-  });
+  const today = new Date();
+  const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+
+  return [...NEWS_ITEMS]
+    .filter((item) => {
+      const itemTime = parseNewsDate(item.date).getTime();
+      return Number.isNaN(itemTime) || itemTime <= todayStart;
+    })
+    .sort((a, b) => {
+      const aTime = parseNewsDate(a.date).getTime();
+      const bTime = parseNewsDate(b.date).getTime();
+      return bTime - aTime;
+    });
 }
 
 function buildNewsNoteElement(item) {
