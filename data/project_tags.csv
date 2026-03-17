@@ -1,0 +1,23 @@
+project_id,tag,sort_order
+proj_augmented_journeys,Augmented Reality,1
+proj_augmented_journeys,HCI,2
+proj_augmented_journeys,Automotive,3
+proj_blending_worlds,Augmented Reality,1
+proj_blending_worlds,HCI,2
+proj_blending_worlds,Automotive,3
+proj_ar_selection,Augmented Reality,1
+proj_ar_selection,HCI,2
+proj_ar_selection,Automotive,3
+proj_visual_slam,Computer Vision,1
+proj_visual_slam,SLAM,2
+proj_virgos_missions,Virtual Reality,1
+proj_virgos_missions,HCI,2
+proj_ar_drive,Augmented Reality,1
+proj_ar_drive,Automotive,2
+proj_ar_drive,Industry Project,3
+proj_bachelor_thesis,Virtual Reality,1
+proj_bachelor_thesis,HCI,2
+proj_master_thesis,Computer Vision,1
+proj_master_thesis,SLAM,2
+proj_master_thesis,Simulation,3
+proj_trading_cards,Computer Vision,1

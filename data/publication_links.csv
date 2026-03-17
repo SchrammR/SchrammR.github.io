@@ -1,0 +1,10 @@
+publication_id,label,href,new_tab,sort_order
+pub_augmented_journeys,"Paper (ACM)",https://dl.acm.org/doi/10.1145/3706598.3714323,true,1
+pub_augmented_journeys,PDF,https://dl.acm.org/doi/pdf/10.1145/3706598.3714323,true,2
+pub_augmented_journeys,"Project Page",papers/augmented-journeys.html,true,3
+pub_blending_worlds,"Paper (ACM)",https://dl.acm.org/doi/10.1145/3706598.3713185,true,1
+pub_blending_worlds,PDF,https://dl.acm.org/doi/pdf/10.1145/3706598.3713185,true,2
+pub_bumpy_ride,"Paper (ACM)",https://dl.acm.org/doi/10.1145/3706598.3714077,true,1
+pub_assessing_ar,"Paper (ACM)",https://dl.acm.org/doi/10.1145/3580585.3607152,true,1
+pub_assessing_ar,PDF,https://dl.acm.org/doi/pdf/10.1145/3580585.3607152,true,2
+pub_in_car_office,"Paper (ACM)",https://dl.acm.org/doi/10.1145/3581961.3609869,true,1

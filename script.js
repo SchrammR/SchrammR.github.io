@@ -1,14 +1,250 @@
 /* =============================================================
    DATA SOURCES
    Edit content in:
-   - data/projects.js
-   - data/publications.js
-   - data/news.js
+   - data/projects.csv
+   - data/project_tags.csv
+   - data/project_media.csv
+   - data/project_links.csv
+   - data/publications.csv
+   - data/publication_links.csv
+   - data/news.csv
+   - data/news_links.csv
    ============================================================= */
 
-const PROJECTS = window.PROJECTS_DATA || [];
-const PUBLICATIONS = window.PUBLICATIONS_DATA || [];
-const NEWS_ITEMS = window.NEWS_DATA || [];
+const DATA_FILES = {
+  projects: "data/projects.csv",
+  projectTags: "data/project_tags.csv",
+  projectMedia: "data/project_media.csv",
+  projectLinks: "data/project_links.csv",
+  publications: "data/publications.csv",
+  publicationLinks: "data/publication_links.csv",
+  news: "data/news.csv",
+  newsLinks: "data/news_links.csv",
+};
+
+let PROJECTS = [];
+let PUBLICATIONS = [];
+let NEWS_ITEMS = [];
+
+async function fetchCsvRows(path) {
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(`Failed to load ${path}: ${response.status} ${response.statusText}`);
+  }
+
+  return parseCsv(await response.text());
+}
+
+function parseCsv(text) {
+  const normalizedText = String(text || "").replace(/^\uFEFF/, "");
+  const rows = [];
+  let currentRow = [];
+  let currentField = "";
+  let inQuotes = false;
+
+  for (let index = 0; index < normalizedText.length; index += 1) {
+    const char = normalizedText[index];
+
+    if (inQuotes) {
+      if (char === '"') {
+        if (normalizedText[index + 1] === '"') {
+          currentField += '"';
+          index += 1;
+        } else {
+          inQuotes = false;
+        }
+      } else {
+        currentField += char;
+      }
+      continue;
+    }
+
+    if (char === '"') {
+      inQuotes = true;
+      continue;
+    }
+
+    if (char === ",") {
+      currentRow.push(currentField);
+      currentField = "";
+      continue;
+    }
+
+    if (char === "\n") {
+      currentRow.push(currentField);
+      rows.push(currentRow);
+      currentRow = [];
+      currentField = "";
+      continue;
+    }
+
+    if (char !== "\r") {
+      currentField += char;
+    }
+  }
+
+  if (currentField.length || currentRow.length) {
+    currentRow.push(currentField);
+    rows.push(currentRow);
+  }
+
+  if (!rows.length) return [];
+
+  const [headerRow, ...dataRows] = rows;
+  const headers = headerRow.map((value) => value.trim());
+
+  return dataRows
+    .filter((row) => row.some((cell) => String(cell || "").trim() !== ""))
+    .map((row) => {
+      const entry = {};
+      headers.forEach((header, index) => {
+        entry[header] = String(row[index] || "").trim();
+      });
+      return entry;
+    });
+}
+
+function parseOptionalNumber(value) {
+  if (value === "") return undefined;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : undefined;
+}
+
+function parseOptionalBoolean(value) {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (!normalized) return false;
+  return normalized === "true" || normalized === "1" || normalized === "yes";
+}
+
+function compareBySortOrder(a, b) {
+  const aOrder = parseOptionalNumber(a.sort_order) ?? Number.MAX_SAFE_INTEGER;
+  const bOrder = parseOptionalNumber(b.sort_order) ?? Number.MAX_SAFE_INTEGER;
+  return aOrder - bOrder;
+}
+
+function groupRowsBy(rows, key) {
+  return rows.reduce((map, row) => {
+    const groupKey = row[key];
+    if (!groupKey) return map;
+    if (!map.has(groupKey)) {
+      map.set(groupKey, []);
+    }
+    map.get(groupKey).push(row);
+    return map;
+  }, new Map());
+}
+
+function normalizeProjects(projectRows, tagRows, mediaRows, linkRows) {
+  const tagsByProject = groupRowsBy(tagRows, "project_id");
+  const mediaByProject = groupRowsBy(mediaRows, "project_id");
+  const linksByProject = groupRowsBy(linkRows, "project_id");
+
+  return projectRows.map((row) => ({
+    title: row.title,
+    tags: (tagsByProject.get(row.id) || [])
+      .sort(compareBySortOrder)
+      .map((tagRow) => tagRow.tag)
+      .filter(Boolean),
+    status: row.status || "",
+    award: row.award || "",
+    description: row.description || "",
+    images: (mediaByProject.get(row.id) || [])
+      .sort(compareBySortOrder)
+      .map((mediaRow) => mediaRow.src)
+      .filter(Boolean),
+    video: row.video || "",
+    links: (linksByProject.get(row.id) || [])
+      .sort(compareBySortOrder)
+      .map((linkRow) => ({
+        label: linkRow.label,
+        href: linkRow.href,
+      }))
+      .filter((link) => link.href),
+    year: parseOptionalNumber(row.year),
+  }));
+}
+
+function normalizePublications(publicationRows, linkRows) {
+  const linksByPublication = groupRowsBy(linkRows, "publication_id");
+
+  return publicationRows.map((row) => ({
+    title: row.title,
+    authors: row.authors || "",
+    venue: row.venue || "",
+    award: row.award || "",
+    year: parseOptionalNumber(row.year),
+    abstract: row.abstract || "",
+    thumb: row.thumb || "",
+    links: (linksByPublication.get(row.id) || [])
+      .sort(compareBySortOrder)
+      .map((linkRow) => ({
+        label: linkRow.label,
+        href: linkRow.href,
+        newTab: parseOptionalBoolean(linkRow.new_tab),
+      }))
+      .filter((link) => link.href),
+  }));
+}
+
+function normalizeNews(newsRows, linkRows) {
+  const linksByNews = groupRowsBy(linkRows, "news_id");
+
+  return newsRows.map((row) => ({
+    date: row.date || "",
+    note: row.note || "",
+    links: (linksByNews.get(row.id) || [])
+      .sort(compareBySortOrder)
+      .map((linkRow) => ({
+        label: linkRow.label,
+        href: linkRow.href,
+      }))
+      .filter((link) => link.href),
+  }));
+}
+
+async function loadPortfolioData() {
+  const [
+    projectRows,
+    projectTagRows,
+    projectMediaRows,
+    projectLinkRows,
+    publicationRows,
+    publicationLinkRows,
+    newsRows,
+    newsLinkRows,
+  ] = await Promise.all([
+    fetchCsvRows(DATA_FILES.projects),
+    fetchCsvRows(DATA_FILES.projectTags),
+    fetchCsvRows(DATA_FILES.projectMedia),
+    fetchCsvRows(DATA_FILES.projectLinks),
+    fetchCsvRows(DATA_FILES.publications),
+    fetchCsvRows(DATA_FILES.publicationLinks),
+    fetchCsvRows(DATA_FILES.news),
+    fetchCsvRows(DATA_FILES.newsLinks),
+  ]);
+
+  PROJECTS = normalizeProjects(projectRows, projectTagRows, projectMediaRows, projectLinkRows);
+  PUBLICATIONS = normalizePublications(publicationRows, publicationLinkRows);
+  NEWS_ITEMS = normalizeNews(newsRows, newsLinkRows);
+}
+
+function showDataLoadError() {
+  const projectGrid = document.getElementById("projectGrid");
+  const pubList = document.getElementById("pubList");
+  const newsList = document.getElementById("newsList");
+
+  if (projectGrid) {
+    projectGrid.innerHTML = '<p class="projects-empty">Unable to load projects right now.</p>';
+  }
+
+  if (pubList) {
+    pubList.innerHTML = '<p class="projects-empty">Unable to load publications right now.</p>';
+  }
+
+  if (newsList) {
+    newsList.innerHTML = '<li class="news-empty">Unable to load news right now.</li>';
+  }
+}
 
 
 /* =============================================================
@@ -889,23 +1125,34 @@ function formatStatusLabel(status) {
    INIT
    ============================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-  // Inject projects
-  renderProjects();
-  buildFilters();
+  async function initPage() {
+    try {
+      await loadPortfolioData();
 
-  // Inject publications
-  renderPublications();
-  initPublicationControls();
+      // Inject projects
+      renderProjects();
+      buildFilters();
 
-  // Inject news
-  renderNews();
+      // Inject publications
+      renderPublications();
+      initPublicationControls();
 
-  // Features
-  initLightbox();
-  initReveal();     // must come after DOM is populated
-  initScrollSpy();
-  initMobileNav();
+      // Inject news
+      renderNews();
+    } catch (error) {
+      console.error("Failed to initialize portfolio data.", error);
+      showDataLoadError();
+    }
 
-  // Footer year
-  document.getElementById("footerYear").textContent = new Date().getFullYear();
+    // Features
+    initLightbox();
+    initReveal();
+    initScrollSpy();
+    initMobileNav();
+
+    // Footer year
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
+  }
+
+  initPage();
 });
