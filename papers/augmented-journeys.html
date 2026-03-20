@@ -53,21 +53,20 @@
 
     <section class="section hero-media">
       <div class="container">
-        <div class="image-grid hero-image-grid">
-          <figure class="image-card">
-            <video autoplay loop muted playsinline preload="metadata" aria-label="Augmented Journeys animated preview">
+        <div class="hero-video-card">
+          <div class="hero-video-shell">
+            <video id="heroPreviewVideo" autoplay loop muted playsinline preload="metadata" aria-label="Augmented Journeys video preview">
               <source src="../Assets/AugmentedJourneysPreview.mp4" type="video/mp4" />
             </video>
-          </figure>
-          <figure class="image-card">
-            <img src="../Assets/AugJour_1.png" alt="Augmented Journeys visual 1" loading="lazy" />
-          </figure>
-          <figure class="image-card">
-            <img src="../Assets/AugJour_2.png" alt="Augmented Journeys visual 2" loading="lazy" />
-          </figure>
-          <figure class="image-card">
-            <img src="../Assets/AugJour_3.png" alt="Augmented Journeys visual 3" loading="lazy" />
-          </figure>
+            <button id="heroPreviewToggle" class="hero-video-toggle" type="button" aria-label="Pause preview" aria-pressed="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.55)"/><rect x="8" y="7.5" width="3" height="9" rx="1" fill="white"/><rect x="13" y="7.5" width="3" height="9" rx="1" fill="white"/></svg>
+            </button>
+          </div>
+          <div class="hero-video-copy">
+            <p class="hero-video-eyebrow">Video Preview</p>
+            <h2 class="hero-video-title">See the in-car AR interaction in context</h2>
+            <p class="hero-video-text">This longer preview highlights how passengers explore passed and upcoming points of interest while the vehicle is in motion.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -90,6 +89,18 @@
             exploring POIs. Additionally, the study highlights limitations of current AR hardware, particularly the impact of
             vehicle movement on 3D interaction.
           </p>
+        </div>
+
+        <div class="image-grid hero-image-grid">
+          <figure class="image-card">
+            <img src="../Assets/AugJour_1.png" alt="Augmented Journeys visual 1" loading="lazy" />
+          </figure>
+          <figure class="image-card">
+            <img src="../Assets/AugJour_2.png" alt="Augmented Journeys visual 2" loading="lazy" />
+          </figure>
+          <figure class="image-card">
+            <img src="../Assets/AugJour_3.png" alt="Augmented Journeys visual 3" loading="lazy" />
+          </figure>
         </div>
       </div>
     </section>
@@ -144,6 +155,31 @@ series = {CHI '25}
 
   <script>
     document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+    const heroVideo = document.getElementById("heroPreviewVideo");
+    const heroToggle = document.getElementById("heroPreviewToggle");
+
+    function setHeroToggleState() {
+      const paused = heroVideo.paused;
+      heroToggle.setAttribute("aria-label", paused ? "Play preview" : "Pause preview");
+      heroToggle.setAttribute("aria-pressed", String(!paused));
+      heroToggle.innerHTML = paused
+        ? '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.55)"/><rect x="8" y="7.5" width="3" height="9" rx="1" fill="white"/><rect x="13" y="7.5" width="3" height="9" rx="1" fill="white"/></svg>';
+    }
+
+    heroToggle.addEventListener("click", () => {
+      if (heroVideo.paused) {
+        heroVideo.play().catch(() => {});
+      } else {
+        heroVideo.pause();
+      }
+      setHeroToggleState();
+    });
+
+    heroVideo.addEventListener("play", setHeroToggleState);
+    heroVideo.addEventListener("pause", setHeroToggleState);
+    setHeroToggleState();
   </script>
 </body>
 </html>

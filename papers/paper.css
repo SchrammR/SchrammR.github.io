@@ -177,6 +177,97 @@ a:hover {
   padding-top: 8px;
 }
 
+.hero-video-card {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(214, 137, 82, 0.16), transparent 34%),
+    linear-gradient(135deg, #fff7ef 0%, #fff1e4 100%);
+  box-shadow: 0 24px 60px rgba(87, 49, 21, 0.12);
+  padding: 18px;
+}
+
+.hero-video-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(193, 106, 47, 0.18);
+  background: #000;
+}
+
+.hero-video-shell video {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.hero-video-toggle {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(17, 24, 39, .72);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .22);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.hero-video-toggle:hover,
+.hero-video-toggle:focus-visible {
+  background: rgba(17, 24, 39, .88);
+  transform: scale(1.05);
+}
+
+.hero-video-toggle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
+.hero-video-toggle svg {
+  width: 28px;
+  height: 28px;
+}
+
+.hero-video-copy {
+  padding: 18px 4px 6px;
+}
+
+.hero-video-eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aa6334;
+}
+
+.hero-video-title {
+  margin: 0 0 10px;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  color: #4c2d1b;
+}
+
+.hero-video-text {
+  margin: 0;
+  max-width: 820px;
+  color: var(--text-muted);
+}
+
+.hero-image-grid {
+  margin-top: 24px;
+}
+
 .hero-image-grid .image-card {
   border-radius: 16px;
 }
@@ -314,6 +405,10 @@ a:hover {
   .image-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .hero-video-card {
+    padding: 14px;
+  }
 }
 
 @media (max-width: 620px) {
@@ -323,5 +418,12 @@ a:hover {
 
   .image-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-video-toggle {
+    width: 44px;
+    height: 44px;
+    left: 12px;
+    bottom: 12px;
   }
 }
