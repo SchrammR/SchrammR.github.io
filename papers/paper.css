@@ -185,6 +185,8 @@ a:hover {
     linear-gradient(135deg, #fff7ef 0%, #fff1e4 100%);
   box-shadow: 0 24px 60px rgba(87, 49, 21, 0.12);
   padding: 18px;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 .hero-video-shell {
@@ -236,32 +238,6 @@ a:hover {
 .hero-video-toggle svg {
   width: 28px;
   height: 28px;
-}
-
-.hero-video-copy {
-  padding: 18px 4px 6px;
-}
-
-.hero-video-eyebrow {
-  margin: 0 0 6px;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #aa6334;
-}
-
-.hero-video-title {
-  margin: 0 0 10px;
-  font-family: "Lora", Georgia, serif;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  color: #4c2d1b;
-}
-
-.hero-video-text {
-  margin: 0;
-  max-width: 820px;
-  color: var(--text-muted);
 }
 
 .hero-image-grid {
