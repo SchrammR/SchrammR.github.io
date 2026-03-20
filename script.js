@@ -944,8 +944,9 @@ function initLightbox() {
 
   let currentList = null;
   let currentIdx  = 0;
+  let currentStateByIndex = {};
 
-  function renderItem(item) {
+  function renderItem(item, state = {}) {
     content.innerHTML = "";
     if (item.type === "image") {
       const img = document.createElement("img");
@@ -956,7 +957,20 @@ function initLightbox() {
       const vid = document.createElement("video");
       vid.src = item.src;
       vid.controls = true;
-      vid.autoplay = true;
+      vid.autoplay = state.paused !== true;
+      vid.loop = true;
+      vid.muted = true;
+      vid.playsInline = true;
+      vid.addEventListener("loadedmetadata", () => {
+        if (typeof state.currentTime === "number" && Number.isFinite(state.currentTime)) {
+          vid.currentTime = Math.min(state.currentTime, vid.duration || state.currentTime);
+        }
+        if (state.paused === true) {
+          vid.pause();
+        } else {
+          vid.play().catch(() => {});
+        }
+      }, { once: true });
       content.appendChild(vid);
     } else if (item.type === "iframe") {
       const frame = document.createElement("iframe");
@@ -975,10 +989,11 @@ function initLightbox() {
     if (multi) counter.textContent = `${currentIdx + 1} / ${currentList.length}`;
   }
 
-  function openGallery(list, idx) {
+  function openGallery(list, idx, stateByIndex = {}) {
     currentList = list;
     currentIdx  = idx;
-    renderItem(currentList[currentIdx]);
+    currentStateByIndex = stateByIndex;
+    renderItem(currentList[currentIdx], currentStateByIndex[currentIdx]);
     updateNav();
     lightbox.classList.add("open");
     document.body.style.overflow = "hidden";
@@ -987,7 +1002,7 @@ function initLightbox() {
   function navigate(dir) {
     if (!currentList || currentList.length < 2) return;
     currentIdx = (currentIdx + dir + currentList.length) % currentList.length;
-    renderItem(currentList[currentIdx]);
+    renderItem(currentList[currentIdx], currentStateByIndex[currentIdx]);
     counter.textContent = `${currentIdx + 1} / ${currentList.length}`;
   }
 
@@ -996,6 +1011,7 @@ function initLightbox() {
     content.innerHTML = "";
     document.body.style.overflow = "";
     currentList = null;
+    currentStateByIndex = {};
   }
 
   closeBtn.addEventListener("click", close);
@@ -1024,7 +1040,12 @@ function initLightbox() {
     if (slide) {
       const list = window._GALLERIES[slide.dataset.galleryId];
       const idx  = parseInt(slide.dataset.galleryIdx, 10);
-      if (list) { openGallery(list, idx); return; }
+      if (list) {
+        openGallery(list, idx, {
+          [idx]: getPreviewMediaState(slide)
+        });
+        return;
+      }
     }
     // Single-item trigger (publication thumbnails etc.)
     const trigger = e.target.closest("[data-lightbox-type]");
@@ -1040,7 +1061,12 @@ function initLightbox() {
     if (slide) {
       const list = window._GALLERIES[slide.dataset.galleryId];
       const idx  = parseInt(slide.dataset.galleryIdx, 10);
-      if (list) { openGallery(list, idx); return; }
+      if (list) {
+        openGallery(list, idx, {
+          [idx]: getPreviewMediaState(slide)
+        });
+        return;
+      }
     }
     const trigger = e.target.closest("[data-lightbox-type]");
     if (trigger) {
@@ -1149,6 +1175,14 @@ function togglePreviewVideo(slide) {
     video.pause();
   }
   syncVideoToggle(slide);
+}
+function getPreviewMediaState(slide) {
+  const video = slide?.querySelector("video");
+  if (!video) return {};
+  return {
+    currentTime: video.currentTime,
+    paused: video.paused,
+  };
 }
 function extractYoutubeId(url) {
   const m = url.match(/(?:v=|\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
