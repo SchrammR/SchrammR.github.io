@@ -551,7 +551,10 @@ function initCardGallery(card, galleryId, total) {
 function buildPublicationItem(pub) {
   const publicationImages = pub.images.length ? pub.images : (pub.thumb ? [pub.thumb] : []);
   const galleryId = `gallery-${_galleryCounter++}`;
-  const mediaList = publicationImages.map((src) => ({ type: "image", src }));
+  const mediaList = publicationImages.map((src) => ({
+    type: /\.(mp4|webm)$/i.test(src) ? "video" : "image",
+    src
+  }));
   window._GALLERIES[galleryId] = mediaList;
   const total = mediaList.length;
 
@@ -562,9 +565,11 @@ function buildPublicationItem(pub) {
                  data-gallery-id="${galleryId}"
                  data-gallery-idx="${index}"
                  role="button" tabindex="0"
-                 aria-label="Expand image ${index + 1} of ${total}">
-            <img src="${item.src}" alt="${pub.title} image ${index + 1}" loading="lazy" />
-            <div class="gallery-slide-overlay">${expandIcon()}</div>
+                 aria-label="${item.type === 'video' ? 'Open video' : 'Expand image'} ${index + 1} of ${total}">
+            ${item.type === "video"
+              ? `<video src="${item.src}" autoplay loop muted playsinline preload="metadata"></video>`
+              : `<img src="${item.src}" alt="${pub.title} image ${index + 1}" loading="lazy" />`}
+            <div class="gallery-slide-overlay">${item.type === "video" ? playIcon() : expandIcon()}</div>
           </div>`).join("")}
       </div>
       ${total > 1 ? `
@@ -573,7 +578,7 @@ function buildPublicationItem(pub) {
         <div class="gallery-dots">
           ${mediaList.map((_, index) => `<span class="gallery-dot${index === 0 ? " active" : ""}"></span>`).join("")}
         </div>
-        <span class="gallery-count">${total} images</span>` : ""}
+        <span class="gallery-count">${total} items</span>` : ""}
     </div>`
     : "";
 
