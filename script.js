@@ -453,7 +453,10 @@ function buildProjectCard(project) {
       inner = `<img src="https://img.youtube.com/vi/${extractYoutubeId(item.src)}/hqdefault.jpg"
                alt="${project.title} preview" loading="lazy" />`;
     } else if (item.type === "video") {
-      inner = `<video src="${item.src}" autoplay loop muted playsinline preload="metadata"></video>`;
+      inner = `<video src="${item.src}" autoplay loop muted playsinline preload="metadata"></video>
+               <button class="gallery-video-toggle" type="button" aria-label="Pause preview" aria-pressed="false">
+                 ${pauseIcon()}
+               </button>`;
     } else {
       inner = `<img src="${item.src}" alt="${project.title} — image ${i + 1}" loading="lazy" />`;
     }
@@ -518,10 +521,18 @@ function buildProjectCard(project) {
 }
 
 function initCardGallery(card, galleryId, total) {
+  const slides = card.querySelectorAll(".gallery-slide");
+  slides.forEach((slide) => {
+    const video = slide.querySelector("video");
+    if (!video) return;
+    syncVideoToggle(slide);
+    video.addEventListener("play", () => syncVideoToggle(slide));
+    video.addEventListener("pause", () => syncVideoToggle(slide));
+  });
+
   if (total <= 1) return;
 
   const track  = card.querySelector(".gallery-track");
-  const slides = card.querySelectorAll(".gallery-slide");
   const dots   = card.querySelectorAll(".gallery-dot");
   const prev   = card.querySelector(".gallery-btn-prev");
   const next   = card.querySelector(".gallery-btn-next");
@@ -540,6 +551,7 @@ function initCardGallery(card, galleryId, total) {
       if (!vid) return;
       if (i === current) vid.play().catch(() => {});
       else { vid.pause(); vid.currentTime = 0; }
+      syncVideoToggle(slide);
     });
   }
 
@@ -567,7 +579,10 @@ function buildPublicationItem(pub) {
                  role="button" tabindex="0"
                  aria-label="${item.type === 'video' ? 'Open video' : 'Expand image'} ${index + 1} of ${total}">
             ${item.type === "video"
-              ? `<video src="${item.src}" autoplay loop muted playsinline preload="metadata"></video>`
+              ? `<video src="${item.src}" autoplay loop muted playsinline preload="metadata"></video>
+                 <button class="gallery-video-toggle" type="button" aria-label="Pause preview" aria-pressed="false">
+                   ${pauseIcon()}
+                 </button>`
               : `<img src="${item.src}" alt="${pub.title} image ${index + 1}" loading="lazy" />`}
             <div class="gallery-slide-overlay">${item.type === "video" ? playIcon() : expandIcon()}</div>
           </div>`).join("")}
@@ -997,6 +1012,14 @@ function initLightbox() {
 
   // Click on a gallery slide
   document.addEventListener("click", (e) => {
+    const videoToggle = e.target.closest(".gallery-video-toggle");
+    if (videoToggle) {
+      e.preventDefault();
+      e.stopPropagation();
+      togglePreviewVideo(videoToggle.closest(".gallery-slide"));
+      return;
+    }
+
     const slide = e.target.closest("[data-gallery-id]");
     if (slide) {
       const list = window._GALLERIES[slide.dataset.galleryId];
@@ -1102,8 +1125,30 @@ function initMobileNav() {
 function playIcon() {
   return `<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>`;
 }
+function pauseIcon() {
+  return `<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.55)"/><rect x="8" y="7.5" width="3" height="9" rx="1" fill="white"/><rect x="13" y="7.5" width="3" height="9" rx="1" fill="white"/></svg>`;
+}
 function expandIcon() {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>`;
+}
+function syncVideoToggle(slide) {
+  const video = slide?.querySelector("video");
+  const toggle = slide?.querySelector(".gallery-video-toggle");
+  if (!video || !toggle) return;
+  const paused = video.paused;
+  toggle.innerHTML = paused ? playIcon() : pauseIcon();
+  toggle.setAttribute("aria-label", paused ? "Play preview" : "Pause preview");
+  toggle.setAttribute("aria-pressed", String(!paused));
+}
+function togglePreviewVideo(slide) {
+  const video = slide?.querySelector("video");
+  if (!video) return;
+  if (video.paused) {
+    video.play().catch(() => {});
+  } else {
+    video.pause();
+  }
+  syncVideoToggle(slide);
 }
 function extractYoutubeId(url) {
   const m = url.match(/(?:v=|\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);

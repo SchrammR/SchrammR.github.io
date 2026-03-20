@@ -654,6 +654,39 @@ img, video { display: block; max-width: 100%; }
 .card-gallery:hover .gallery-slide.active .gallery-slide-overlay { opacity: 1; }
 .gallery-slide-overlay svg { width: 44px; height: 44px; }
 
+.gallery-video-toggle {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 999px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(17, 24, 39, .72);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .22);
+  transition: transform var(--transition), background var(--transition), opacity var(--transition);
+}
+.gallery-video-toggle:hover,
+.gallery-video-toggle:focus-visible {
+  background: rgba(17, 24, 39, .88);
+  transform: scale(1.05);
+}
+.gallery-video-toggle:focus-visible {
+  outline: 2px solid rgba(255,255,255,.9);
+  outline-offset: 2px;
+}
+.gallery-video-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
 /* Prev / next arrows on card */
 .gallery-btn {
   position: absolute;
