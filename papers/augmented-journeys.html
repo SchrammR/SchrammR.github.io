@@ -55,12 +55,9 @@
       <div class="container">
         <div class="hero-video-card">
           <div class="hero-video-shell">
-            <video id="heroPreviewVideo" autoplay loop muted playsinline preload="metadata" aria-label="Augmented Journeys video preview">
+            <video controls autoplay loop muted playsinline preload="metadata" aria-label="Augmented Journeys video preview">
               <source src="../Assets/AugmentedJourneysPreview.mp4" type="video/mp4" />
             </video>
-            <button id="heroPreviewToggle" class="hero-video-toggle" type="button" aria-label="Pause preview" aria-pressed="true">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.55)"/><rect x="8" y="7.5" width="3" height="9" rx="1" fill="white"/><rect x="13" y="7.5" width="3" height="9" rx="1" fill="white"/></svg>
-            </button>
           </div>
         </div>
       </div>
@@ -100,27 +97,6 @@
       </div>
     </section>
 
-    <section class="section section-alt">
-      <div class="container">
-        <h2 class="section-title">Videos</h2>
-        <p class="section-subtitle">Supplementary videos hosted by ACM Digital Library</p>
-        <div class="video-grid">
-          <article class="video-card">
-            <h3>Talk Video</h3>
-            <video controls preload="metadata" poster="../Assets/AugJour_1.png">
-              <source src="https://dl.acm.org/doi/suppl/10.1145/3706598.3714323/suppl_file/pn6586-talk-video.mp4" type="video/mp4" />
-            </video>
-          </article>
-          <article class="video-card">
-            <h3>Study Conditions Demo</h3>
-            <video controls preload="metadata" poster="../Assets/AugJour_2.png">
-              <source src="https://dl.acm.org/doi/suppl/10.1145/3706598.3714323/suppl_file/pn6586.mp4" type="video/mp4" />
-            </video>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section citation-section">
       <div class="container">
         <h2 class="section-title citation-title">Citation</h2>
@@ -150,31 +126,6 @@ series = {CHI '25}
 
   <script>
     document.getElementById("footerYear").textContent = new Date().getFullYear();
-
-    const heroVideo = document.getElementById("heroPreviewVideo");
-    const heroToggle = document.getElementById("heroPreviewToggle");
-
-    function setHeroToggleState() {
-      const paused = heroVideo.paused;
-      heroToggle.setAttribute("aria-label", paused ? "Play preview" : "Pause preview");
-      heroToggle.setAttribute("aria-pressed", String(!paused));
-      heroToggle.innerHTML = paused
-        ? '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.4)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>'
-        : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.55)"/><rect x="8" y="7.5" width="3" height="9" rx="1" fill="white"/><rect x="13" y="7.5" width="3" height="9" rx="1" fill="white"/></svg>';
-    }
-
-    heroToggle.addEventListener("click", () => {
-      if (heroVideo.paused) {
-        heroVideo.play().catch(() => {});
-      } else {
-        heroVideo.pause();
-      }
-      setHeroToggleState();
-    });
-
-    heroVideo.addEventListener("play", setHeroToggleState);
-    heroVideo.addEventListener("pause", setHeroToggleState);
-    setHeroToggleState();
   </script>
 </body>
 </html>
