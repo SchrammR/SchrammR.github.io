@@ -1038,6 +1038,19 @@ img, video { display: block; max-width: 100%; }
   text-decoration: none;
 }
 
+.pub-link-primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #cb7b43 100%);
+  border-color: var(--color-accent);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(165, 92, 44, 0.18);
+}
+
+.pub-link-primary:hover {
+  background: linear-gradient(135deg, #8d4f28 0%, #bb6d37 100%);
+  border-color: #8d4f28;
+  color: #fff;
+}
+
 .pub-abstract-toggle {
   background: none;
   border: none;

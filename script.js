@@ -602,7 +602,8 @@ function buildPublicationItem(pub) {
       const isExternal = /^(https?:)?\/\//i.test(l.href) || l.href.startsWith("mailto:");
       const openInNewTab = Boolean(l.newTab) || isExternal;
       const targetAttrs = openInNewTab ? ' target="_blank" rel="noopener"' : "";
-      return `<a class="pub-link" href="${l.href}"${targetAttrs}>${l.label}</a>`;
+      const prominentClass = l.label === "Project Page" ? " pub-link-primary" : "";
+      return `<a class="pub-link${prominentClass}" href="${l.href}"${targetAttrs}>${l.label}</a>`;
     })
     .join("");
 
