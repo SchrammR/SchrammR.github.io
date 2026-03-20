@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blending the Worlds — Paper Page</title>
+  <meta name="description" content="Blending the Worlds: An Evaluation of World-Fixed Visual Appearances in Automotive Augmented Reality — abstract, video, and images." />
+  <link rel="canonical" href="https://schrammr.github.io/papers/blending-the-worlds.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Blending the Worlds — Paper Page" />
+  <meta property="og:description" content="Abstract, video, and images for Blending the Worlds." />
+  <meta property="og:url" content="https://schrammr.github.io/papers/blending-the-worlds.html" />
+  <meta property="og:image" content="https://schrammr.github.io/Assets/BtW_1.png" />
+
+  <link rel="stylesheet" href="paper.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <main class="paper-page">
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title">Blending the Worlds</h1>
+        <p class="hero-subtitle">An Evaluation of World-Fixed Visual Appearances in Automotive Augmented Reality</p>
+        <p class="hero-authors">
+          <a href="https://scholar.google.com/citations?user=oKu2gN8AAAAJ" target="_blank" rel="noopener">Robin Connor Schramm</a>
+          <span>·</span>
+          <a href="https://scholar.google.com/citations?user=WjhBSWIAAAAJ&hl=en" target="_blank" rel="noopener">Markus Sasalovici</a>
+          <span>·</span>
+          Jann Philipp Freiwald
+          <span>·</span>
+          Michael Martin Otto
+          <span>·</span>
+          Melissa Reinelt
+          <span>·</span>
+          Ulrich Schwanecke
+        </p>
+        <p class="hero-award">CHI'25</p>
+        <div class="hero-actions">
+          <a class="btn" href="https://dl.acm.org/doi/10.1145/3706598.3713185" target="_blank" rel="noopener">Paper (ACM)</a>
+          <a class="btn btn-muted" href="https://dl.acm.org/doi/pdf/10.1145/3706598.3713185" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero-media">
+      <div class="container">
+        <div class="hero-video-card">
+          <div class="hero-video-shell">
+            <video controls autoplay loop muted playsinline preload="metadata" aria-label="Blending the Worlds video preview">
+              <source src="../Assets/BlendingTheWorldsPreview.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="tldr"><strong>TL;DR:</strong> We evaluate how six world-fixed AR appearance parameters shape user preferences and acceptance in moving vehicles, and derive design guidance for automotive AR points of interest.</p>
+
+        <div class="abstract-card">
+          <h2 class="section-title">Abstract</h2>
+          <p class="abstract-text">
+            With the transition to fully autonomous vehicles, non-driving related tasks (NDRTs) become increasingly important.
+            In-car AR gives passengers the possibility to engage with their surroundings via world-fixed POIs. We conducted a
+            field study (N=38) examining six visualization parameters: positioning, scaling, rotation, render distance,
+            information density, and appearance. Our findings reveal user preferences and general acceptance of AR functionality,
+            and we derived UX guidelines for POI visualization in in-car AR.
+          </p>
+        </div>
+
+        <div class="image-grid hero-image-grid">
+          <figure class="image-card">
+            <img src="../Assets/BtW_1.png" alt="Blending the Worlds visual 1" loading="lazy" />
+          </figure>
+          <figure class="image-card">
+            <img src="../Assets/BtW_2.png" alt="Blending the Worlds visual 2" loading="lazy" />
+          </figure>
+          <figure class="image-card">
+            <img src="../Assets/BtW_3.png" alt="Blending the Worlds visual 3" loading="lazy" />
+          </figure>
+          <figure class="image-card">
+            <img src="../Assets/BtW_4.png" alt="Blending the Worlds visual 4" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>© <span id="footerYear"></span> Robin Connor Schramm</p>
+  </footer>
+
+  <script>
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
