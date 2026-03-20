@@ -597,19 +597,22 @@ function buildPublicationItem(pub) {
     </div>`
     : "";
 
-  const linksHtml = [...pub.links]
-    .sort((a, b) => {
-      const aProject = a.label === "Project Page" ? 1 : 0;
-      const bProject = b.label === "Project Page" ? 1 : 0;
-      return aProject - bProject;
-    })
-    .map((l) => {
+  const renderPubLink = (l) => {
       const isExternal = /^(https?:)?\/\//i.test(l.href) || l.href.startsWith("mailto:");
       const openInNewTab = Boolean(l.newTab) || isExternal;
       const targetAttrs = openInNewTab ? ' target="_blank" rel="noopener"' : "";
       const prominentClass = l.label === "Project Page" ? " pub-link-primary" : "";
       return `<a class="pub-link${prominentClass}" href="${l.href}"${targetAttrs}>${l.label}</a>`;
-    })
+    };
+
+  const secondaryLinksHtml = pub.links
+    .filter((l) => l.label !== "Project Page")
+    .map(renderPubLink)
+    .join("");
+
+  const projectLinkHtml = pub.links
+    .filter((l) => l.label === "Project Page")
+    .map(renderPubLink)
     .join("");
 
   const item = document.createElement("div");
@@ -624,8 +627,9 @@ function buildPublicationItem(pub) {
       <h3 class="pub-title">${pub.title}</h3>
       <p class="pub-authors">${pub.authors}</p>
       <div class="pub-links">
-        ${linksHtml}
+        ${secondaryLinksHtml}
         <button class="pub-abstract-toggle" aria-expanded="false">Abstract ▾</button>
+        ${projectLinkHtml}
       </div>
       <p class="pub-abstract">${pub.abstract}</p>
     </div>

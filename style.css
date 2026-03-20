@@ -1018,20 +1018,26 @@ img, video { display: block; max-width: 100%; }
 
 .pub-links {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
   align-items: center;
+  margin-top: 2px;
 }
 
 .pub-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
   font-size: .78rem;
   font-weight: 600;
-  padding: 3px 10px;
+  padding: 0 14px;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   color: var(--color-accent);
+  background: rgba(255,255,255,.72);
   text-decoration: none;
-  transition: background var(--transition), border-color var(--transition);
+  transition: background var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 .pub-link:hover {
   background: var(--color-tag-bg);
@@ -1040,31 +1046,35 @@ img, video { display: block; max-width: 100%; }
 }
 
 .pub-link-primary {
-  order: 2;
-  margin-left: auto;
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-h) 100%);
   border-color: var(--color-accent);
   color: #fff;
-  box-shadow: 0 8px 18px rgba(71, 122, 75, 0.18);
+  font-weight: 700;
+  box-shadow: 0 8px 16px rgba(71, 122, 75, 0.14);
 }
 
 .pub-link-primary:hover {
   background: linear-gradient(135deg, var(--color-accent-h) 0%, #3d6841 100%);
   border-color: var(--color-accent-h);
   color: #fff;
+  transform: translateY(-1px);
 }
 
 .pub-abstract-toggle {
-  order: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
   background: none;
   border: none;
   font-size: .78rem;
   font-weight: 600;
   color: var(--color-text-muted);
   cursor: pointer;
-  padding: 3px 10px;
+  padding: 0 14px;
+  background: rgba(255,255,255,.72);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   transition: all var(--transition);
 }
 .pub-abstract-toggle:hover { color: var(--color-accent); border-color: var(--color-accent); background: var(--color-tag-bg); }
