@@ -597,7 +597,12 @@ function buildPublicationItem(pub) {
     </div>`
     : "";
 
-  const linksHtml = pub.links
+  const linksHtml = [...pub.links]
+    .sort((a, b) => {
+      const aProject = a.label === "Project Page" ? 1 : 0;
+      const bProject = b.label === "Project Page" ? 1 : 0;
+      return aProject - bProject;
+    })
     .map((l) => {
       const isExternal = /^(https?:)?\/\//i.test(l.href) || l.href.startsWith("mailto:");
       const openInNewTab = Boolean(l.newTab) || isExternal;
