@@ -460,7 +460,7 @@ function buildProjectCard(project) {
     } else {
       inner = `<img src="${item.src}" alt="${project.title} — image ${i + 1}" loading="lazy" />`;
     }
-    const icon = (item.type !== "image") ? playIcon() : expandIcon();
+    const icon = expandIcon();
     const videoBadge = (item.type === "video" || item.type === "iframe")
       ? `<span class="gallery-video-badge">VIDEO</span>` : "";
     return `<div class="gallery-slide${i === 0 ? " active" : ""}"
@@ -584,7 +584,7 @@ function buildPublicationItem(pub) {
                    ${pauseIcon()}
                  </button>`
               : `<img src="${item.src}" alt="${pub.title} image ${index + 1}" loading="lazy" />`}
-            <div class="gallery-slide-overlay">${item.type === "video" ? playIcon() : expandIcon()}</div>
+            <div class="gallery-slide-overlay">${expandIcon()}</div>
           </div>`).join("")}
       </div>
       ${total > 1 ? `
