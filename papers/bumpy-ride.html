@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bumpy Ride? — Paper Page</title>
+  <meta name="description" content="Bumpy Ride? Understanding the Effects of External Forces on Spatial Interactions in Moving Vehicles — abstract, video, and images." />
+  <link rel="canonical" href="https://schrammr.github.io/papers/bumpy-ride.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Bumpy Ride? — Paper Page" />
+  <meta property="og:description" content="Abstract, video, and images for Bumpy Ride?." />
+  <meta property="og:url" content="https://schrammr.github.io/papers/bumpy-ride.html" />
+  <meta property="og:image" content="https://schrammr.github.io/Assets/BumpyRide_1.png" />
+
+  <link rel="stylesheet" href="paper.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <main class="paper-page">
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title">Bumpy Ride?</h1>
+        <p class="hero-subtitle">Understanding the Effects of External Forces on Spatial Interactions in Moving Vehicles</p>
+        <p class="hero-authors">
+          <a href="https://scholar.google.com/citations?user=WjhBSWIAAAAJ&hl=en" target="_blank" rel="noopener">Markus Sasalovici</a>
+          <span>·</span>
+          A. Zeqiri
+          <span>·</span>
+          <a href="https://scholar.google.com/citations?user=oKu2gN8AAAAJ" target="_blank" rel="noopener">Robin Connor Schramm</a>
+          <span>·</span>
+          Oscar Ariza Nunez
+          <span>·</span>
+          Pascal Jansen
+          <span>·</span>
+          Jann Philipp Freiwald
+          <span>·</span>
+          Mark Colley
+          <span>·</span>
+          Christian Winkler
+          <span>·</span>
+          Enrico Rukzio
+        </p>
+        <p class="hero-award">CHI'25</p>
+        <div class="hero-actions">
+          <a class="btn" href="https://dl.acm.org/doi/10.1145/3706598.3714077" target="_blank" rel="noopener">Paper (ACM)</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero-media">
+      <div class="container">
+        <div class="hero-video-card">
+          <div class="hero-video-shell">
+            <video controls autoplay loop muted playsinline preload="metadata" aria-label="Bumpy Ride video preview">
+              <source src="../Assets/BumpyRidePreview.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="tldr"><strong>TL;DR:</strong> We study how vehicle motion, vibration, and external forces affect spatial interaction performance in moving vehicles, comparing multiple interaction techniques under real-world driving conditions.</p>
+
+        <div class="abstract-card">
+          <h2 class="section-title">Abstract</h2>
+          <p class="abstract-text">
+            As the use of head-mounted displays in moving vehicles increases, passengers can immerse themselves in visual experiences independent of their physical environment. However, interaction methods are susceptible to physical motion, leading to input errors and reduced task performance. This work investigates the impact of G-forces, vibrations, and unpredictable maneuvers on 3D interaction methods. We conducted a field study with 24 participants in both stationary and moving vehicles to examine the effects of vehicle motion on four interaction methods: (1) Gaze and Pinch, (2) Direct Touch, (3) Handray, and (4) Head Gaze. Participants performed selections in a Fitts' Law task. Our findings reveal a significant effect of vehicle motion on interaction accuracy and duration across the tested combinations of Interaction Method x Road Type x Curve Type. We found a significant impact of movement on throughput, error rate, and perceived workload. Finally, we propose future research considerations and recommendations on interaction methods during vehicle movement.
+          </p>
+        </div>
+
+        <div class="image-grid hero-image-grid">
+          <figure class="image-card">
+            <img src="../Assets/BumpyRide_1.png" alt="Bumpy Ride visual 1" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>© <span id="footerYear"></span> Robin Connor Schramm</p>
+  </footer>
+
+  <script>
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
