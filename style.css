@@ -839,6 +839,12 @@ img, video { display: block; max-width: 100%; }
   border: 1px solid #c4d4f5;
 }
 
+.card-status-industry {
+  color: #3d4f7a;
+  background: #e5ecfb;
+  border: 1px solid #c4d4f5;
+}
+
 .card-status-student {
   color: #5b4a1f;
   background: #f6edd6;

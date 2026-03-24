@@ -210,8 +210,6 @@ window._GALLERIES = {};
 let _galleryCounter = 0;
 
 const projectViewState = {
-  tag: "all",
-  year: "all",
   sort: "desc",
   visibleCount: 3,
 };
@@ -652,47 +650,9 @@ function buildPublicationItem(pub) {
 /* =============================================================
    FILTERS
    ============================================================= */
-function buildFilters() {
-  const allTags = new Set();
-  PROJECTS.forEach((p) => p.tags.forEach((t) => allTags.add(t)));
-
-  const bar = document.getElementById("projectFilters");
-  const yearSelect = document.getElementById("projectYearFilter");
+function initProjectControls() {
   const sortSelect = document.getElementById("projectSortOrder");
-
-  allTags.forEach((tag) => {
-    const btn = document.createElement("button");
-    btn.className = "filter-btn";
-    btn.dataset.filter = tag.toLowerCase();
-    btn.textContent = tag;
-    bar.appendChild(btn);
-  });
-
-  // Build distinct year options (latest first in dropdown)
-  const years = [...new Set(PROJECTS.map((p) => p.year).filter(Number.isFinite))].sort((a, b) => b - a);
-  years.forEach((year) => {
-    const option = document.createElement("option");
-    option.value = String(year);
-    option.textContent = String(year);
-    yearSelect.appendChild(option);
-  });
-
-  bar.addEventListener("click", (e) => {
-    const btn = e.target.closest(".filter-btn");
-    if (!btn) return;
-    bar.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    projectViewState.tag = btn.dataset.filter;
-    projectViewState.visibleCount = PROJECT_PREVIEW_COUNT;
-    renderProjects({ animate: true });
-  });
-
-  yearSelect.addEventListener("change", () => {
-    projectViewState.year = yearSelect.value;
-    projectViewState.visibleCount = PROJECT_PREVIEW_COUNT;
-    renderProjects();
-  });
+  if (!sortSelect) return;
 
   sortSelect.addEventListener("change", () => {
     projectViewState.sort = sortSelect.value;
@@ -759,15 +719,7 @@ function updateProjectShowMoreButton(totalVisibleProjects) {
 }
 
 function getVisibleProjects() {
-  const filtered = PROJECTS.filter((project) => {
-    const tagMatch = projectViewState.tag === "all"
-      || project.tags.some((tag) => tag.toLowerCase() === projectViewState.tag);
-    const yearMatch = projectViewState.year === "all"
-      || String(project.year) === projectViewState.year;
-    return tagMatch && yearMatch;
-  });
-
-  return filtered.sort((a, b) => {
+  return [...PROJECTS].sort((a, b) => {
     const aYear = Number.isFinite(a.year) ? a.year : -Infinity;
     const bYear = Number.isFinite(b.year) ? b.year : -Infinity;
     if (aYear === bYear) return a.title.localeCompare(b.title);
@@ -791,7 +743,7 @@ function renderProjects(options = {}) {
   if (!visibleProjects.length) {
     const empty = document.createElement("p");
     empty.className = "projects-empty";
-    empty.textContent = "No projects match the selected filters.";
+    empty.textContent = "No projects to display.";
     grid.appendChild(empty);
     updateProjectShowMoreButton(0);
     return;
@@ -1203,6 +1155,7 @@ function formatStatusLabel(status) {
   const labels = {
     publication: "Publication",
     showcase: "Showcase",
+    industry: "Industry",
     student: "Student project",
   };
   return labels[status] || status;
@@ -1218,7 +1171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Inject projects
       renderProjects();
-      buildFilters();
+      initProjectControls();
 
       // Inject publications
       renderPublications();
