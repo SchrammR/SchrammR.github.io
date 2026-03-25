@@ -619,7 +619,7 @@ function buildPublicationItem(pub) {
     ${galleryHtml}
     <div class="pub-body">
       <div class="pub-badges">
-        ${pub.favorite ? `<span class="pub-favorite-badge" aria-label="Favorite publication">★ Favorite</span>` : ""}
+        ${pub.favorite ? `<span class="pub-favorite-badge" aria-label="Favorite publication">★</span>` : ""}
         <span class="pub-venue-badge">${pub.venue}</span>
         ${pub.award ? `<span class="award-badge"><span class="award-badge-icon" aria-hidden="true">🏆</span>${pub.award}</span>` : ""}
       </div>
@@ -791,7 +791,15 @@ function renderPublications(options = {}) {
   const limitedCount = Math.min(publicationViewState.visibleCount, visiblePublications.length);
   const publicationsToRender = visiblePublications.slice(0, limitedCount);
 
-  publicationsToRender.forEach((publication) => {
+  const dividerIndex = publicationsToRender.findIndex((publication) => !publication.favorite);
+
+  publicationsToRender.forEach((publication, index) => {
+    if (dividerIndex > 0 && index === dividerIndex) {
+      const divider = document.createElement("div");
+      divider.className = "pub-divider";
+      divider.setAttribute("aria-hidden", "true");
+      pubList.appendChild(divider);
+    }
     pubList.appendChild(buildPublicationItem(publication));
   });
 

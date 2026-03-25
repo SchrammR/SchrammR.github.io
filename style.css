@@ -975,16 +975,23 @@ img, video { display: block; max-width: 100%; }
 .pub-favorite-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 3px 10px;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
   border-radius: 999px;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .02em;
-  color: #7a5200;
-  background: #fff2c2;
-  border: 1px solid #f2cf66;
+  font-size: .8rem;
+  line-height: 1;
+  color: #b28717;
+  background: #fff8de;
+  border: 1px solid #ecdca4;
   white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+}
+
+.pub-divider {
+  height: 1px;
+  margin: -4px 8px 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(122, 148, 108, 0.16) 12%, rgba(122, 148, 108, 0.16) 88%, transparent 100%);
 }
 
 .pub-venue-badge {
