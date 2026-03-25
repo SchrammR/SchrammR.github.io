@@ -634,6 +634,12 @@ img, video { display: block; max-width: 100%; }
 
 .gallery-slide img { object-fit: cover; }
 .gallery-slide video { object-fit: cover; }
+.gallery-slide img.media-contain {
+  object-fit: contain;
+  background: var(--color-surface);
+  padding: 12px;
+  box-sizing: border-box;
+}
 .gallery-slide img.media-wide {
   object-fit: contain;
   background: var(--color-surface);

@@ -561,10 +561,18 @@ function initCardGallery(card, galleryId, total) {
 function buildPublicationItem(pub) {
   const publicationImages = pub.images.length ? pub.images : (pub.thumb ? [pub.thumb] : []);
   const galleryId = `gallery-${_galleryCounter++}`;
-  const mediaList = publicationImages.map((src) => ({
-    type: /\.(mp4|webm)$/i.test(src) ? "video" : "image",
-    src
-  }));
+  const mediaList = publicationImages.map((rawItem) => {
+    const [src, fitHint] = String(rawItem)
+      .split("|")
+      .map((part) => part.trim())
+      .filter(Boolean);
+
+    return {
+      type: /\.(mp4|webm)$/i.test(src) ? "video" : "image",
+      src,
+      fit: fitHint === "contain" ? "contain" : "cover",
+    };
+  });
   window._GALLERIES[galleryId] = mediaList;
   const total = mediaList.length;
 
@@ -581,7 +589,7 @@ function buildPublicationItem(pub) {
                  <button class="gallery-video-toggle" type="button" aria-label="Pause preview" aria-pressed="false">
                    ${pauseIcon()}
                  </button>`
-              : `<img src="${item.src}" alt="${pub.title} image ${index + 1}" loading="lazy" />`}
+              : `<img src="${item.src}" alt="${pub.title} image ${index + 1}" loading="lazy"${item.fit === "contain" ? ' class="media-contain"' : ""} />`}
             <div class="gallery-slide-overlay">${expandIcon()}</div>
           </div>`).join("")}
       </div>
