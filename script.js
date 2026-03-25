@@ -523,9 +523,15 @@ function initCardGallery(card, galleryId, total) {
   slides.forEach((slide) => {
     const video = slide.querySelector("video");
     if (!video) return;
+    video.loop = true;
     syncVideoToggle(slide);
     video.addEventListener("play", () => syncVideoToggle(slide));
     video.addEventListener("pause", () => syncVideoToggle(slide));
+    video.addEventListener("ended", () => {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+      syncVideoToggle(slide);
+    });
   });
 
   if (total <= 1) return;

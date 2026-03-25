@@ -994,7 +994,7 @@ img, video { display: block; max-width: 100%; }
 
 .pub-divider {
   height: 1px;
-  margin: -4px 8px 2px;
+  margin: 10px 8px 16px;
   background: linear-gradient(90deg, transparent 0%, rgba(122, 148, 108, 0.16) 12%, rgba(122, 148, 108, 0.16) 88%, transparent 100%);
 }
 
