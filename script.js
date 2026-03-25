@@ -155,6 +155,7 @@ function normalizePublications(publicationRows) {
     venue: row.venue || "",
     award: row.award || "",
     year: parseOptionalNumber(row.year),
+    favorite: /^(true|yes|1)$/i.test(String(row.favorite || "").trim()),
     abstract: row.abstract || "",
     thumb: row.thumb || "",
     images: parseListField(row.images),
@@ -218,7 +219,6 @@ const PROJECT_PREVIEW_COUNT = 3;
 const PROJECT_SHOW_MORE_STEP = 3;
 
 const publicationViewState = {
-  sort: "desc",
   visibleCount: 3,
 };
 
@@ -619,6 +619,7 @@ function buildPublicationItem(pub) {
     ${galleryHtml}
     <div class="pub-body">
       <div class="pub-badges">
+        ${pub.favorite ? `<span class="pub-favorite-badge" aria-label="Favorite publication">★ Favorite</span>` : ""}
         <span class="pub-venue-badge">${pub.venue}</span>
         ${pub.award ? `<span class="award-badge"><span class="award-badge-icon" aria-hidden="true">🏆</span>${pub.award}</span>` : ""}
       </div>
@@ -766,10 +767,11 @@ function renderProjects(options = {}) {
 
 function getVisiblePublications() {
   return [...PUBLICATIONS].sort((a, b) => {
+    if (a.favorite !== b.favorite) return a.favorite ? -1 : 1;
     const aYear = Number.isFinite(a.year) ? a.year : -Infinity;
     const bYear = Number.isFinite(b.year) ? b.year : -Infinity;
     if (aYear === bYear) return a.title.localeCompare(b.title);
-    return publicationViewState.sort === "asc" ? aYear - bYear : bYear - aYear;
+    return bYear - aYear;
   });
 }
 
@@ -881,15 +883,6 @@ function applySmartImageFit() {
     } else {
       img.addEventListener("load", updateFitClass, { once: true });
     }
-  });
-}
-
-function initPublicationControls() {
-  const sortSelect = document.getElementById("publicationSortOrder");
-  sortSelect.addEventListener("change", () => {
-    publicationViewState.sort = sortSelect.value;
-    publicationViewState.visibleCount = PUBLICATION_PREVIEW_COUNT;
-    renderPublications();
   });
 }
 
@@ -1175,7 +1168,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Inject publications
       renderPublications();
-      initPublicationControls();
 
       // Inject news
       renderNews();

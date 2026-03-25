@@ -912,10 +912,6 @@ img, video { display: block; max-width: 100%; }
 
 .scholar-link { color: var(--color-accent); font-weight: 500; }
 
-.pub-controls {
-  margin-bottom: 18px;
-}
-
 .pub-list { display: flex; flex-direction: column; gap: 24px; }
 
 .publication-show-more-wrap {
@@ -974,6 +970,21 @@ img, video { display: block; max-width: 100%; }
   align-items: center;
   gap: 6px;
   margin-bottom: 6px;
+}
+
+.pub-favorite-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: #7a5200;
+  background: #fff2c2;
+  border: 1px solid #f2cf66;
+  white-space: nowrap;
 }
 
 .pub-venue-badge {
