@@ -944,6 +944,10 @@ img, video { display: block; max-width: 100%; }
   padding: 20px;
   transition: box-shadow var(--transition), transform var(--transition);
 }
+.pub-item--no-media {
+  grid-template-columns: 1fr;
+}
+
 .pub-item:hover {
   box-shadow: var(--shadow-sm);
   transform: translateX(4px);

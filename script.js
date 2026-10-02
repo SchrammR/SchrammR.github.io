@@ -628,7 +628,7 @@ function buildPublicationItem(pub) {
     .join("");
 
   const item = document.createElement("div");
-  item.className = "pub-item reveal";
+  item.className = `pub-item reveal${galleryHtml ? "" : " pub-item--no-media"}`;
   item.innerHTML = `
     ${galleryHtml}
     <div class="pub-body">
